@@ -1,0 +1,404 @@
+/*
+ * Global styles: Tailwind CSS v4, the colour tokens (light and dark), and the few rules that
+ * utilities can't express (pseudo-elements, keyframes, the globe's SVG classes).
+ *
+ * Colours are CSS variables on :root, so the whole site switches theme by changing them: the
+ * system preference by default, or an explicit choice stored by the theme toggle as
+ * <html data-theme="light|dark"> (set before first paint by the script in layout.tsx).
+ */
+@import "tailwindcss";
+
+/* `dark:` follows the explicit choice first, then the system preference. */
+@custom-variant dark {
+  &:where([data-theme="dark"], [data-theme="dark"] *) {
+    @slot;
+  }
+  @media (prefers-color-scheme: dark) {
+    &:where(:root:not([data-theme="light"]), :root:not([data-theme="light"]) *) {
+      @slot;
+    }
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-raised: var(--raised);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accentsoft: var(--accent-soft);
+  --color-warm: var(--warm);
+  --color-warmsoft: var(--warm-soft);
+  /* The current project's hue: set per card / page with style={{ "--project": … }}. */
+  --color-project: var(--project, var(--accent));
+  --color-live: var(--live);
+
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --container-page: 72rem;
+}
+
+:root {
+  --bg: #f3f6f7;
+  --surface: #ffffff;
+  --raised: #e8eef0;
+  --ink: #0d1b22;
+  --muted: #52636c;
+  --line: #d3dde1;
+  --accent: #0a6d88;
+  --accent-soft: #d6ebf1;
+  --warm: #b9621c;
+  --warm-soft: #f7e6d6;
+  --grid: rgb(10 109 136 / 0.07);
+
+  /* One hue per project (text-safe on --surface and --bg in both themes). */
+  --hue-sinophile: #c32f37;
+  --hue-piano: #17784e;
+  --hue-molecula: #5646d1;
+  --hue-milan: #2160c4;
+  --live: #15803d;
+}
+
+/* The dark tokens appear twice (CSS can't share a block between a selector and a media query):
+   for an explicit dark choice, and for the system preference when no choice was made. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0a1318;
+  --surface: #101d24;
+  --raised: #16262e;
+  --ink: #e4edf0;
+  --muted: #93a6ae;
+  --line: #22363f;
+  --accent: #56c4de;
+  --accent-soft: #123644;
+  --warm: #f0a560;
+  --warm-soft: #3a2615;
+  --grid: rgb(86 196 222 / 0.06);
+  --hue-sinophile: #ff7f84;
+  --hue-piano: #52d39c;
+  --hue-molecula: #a99eff;
+  --hue-milan: #74abff;
+  --live: #4ade80;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0a1318;
+    --surface: #101d24;
+    --raised: #16262e;
+    --ink: #e4edf0;
+    --muted: #93a6ae;
+    --line: #22363f;
+    --accent: #56c4de;
+    --accent-soft: #123644;
+    --warm: #f0a560;
+    --warm-soft: #3a2615;
+    --grid: rgb(86 196 222 / 0.06);
+    --hue-sinophile: #ff7f84;
+    --hue-piano: #52d39c;
+    --hue-molecula: #a99eff;
+    --hue-milan: #74abff;
+    --live: #4ade80;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.6;
+    transition:
+      background-color 0.3s,
+      color 0.3s;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  details > summary {
+    list-style: none;
+    cursor: pointer;
+  }
+
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details[open] .chev {
+    transform: rotate(180deg);
+  }
+}
+
+@layer components {
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .num {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Faint engineering-paper grid behind the hero. */
+  .hero-grid {
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  /* Underline that grows under the nav link of the section in view (aria-current="true"). */
+  .navlink::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: -6px;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transition: transform 0.25s;
+  }
+
+  .navlink[aria-current="true"] {
+    color: var(--ink);
+  }
+
+  .navlink[aria-current="true"]::after {
+    transform: scaleX(1);
+  }
+
+  /* Experience filter (src/components/home/experience-filter.tsx): dim the other categories. */
+  .timeline > li {
+    transition:
+      opacity 0.3s,
+      transform 0.3s;
+  }
+
+  .timeline[data-filter="tech"] > li:not([data-cat="tech"]),
+  .timeline[data-filter="vol"] > li:not([data-cat="vol"]) {
+    opacity: 0.28;
+  }
+
+  .letter p + p {
+    margin-top: 0.9em;
+  }
+
+  /* Long-form text on the project documentation pages. */
+  .prose-doc p + p,
+  .prose-doc p + ul,
+  .prose-doc ul + p,
+  .prose-doc p + ol,
+  .prose-doc ol + p {
+    margin-top: 1rem;
+  }
+
+  .prose-doc code {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    padding: 0.1em 0.35em;
+    border-radius: 0.3rem;
+    background: var(--raised);
+  }
+
+  .prose-doc a {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .prose-doc a:hover {
+    text-decoration: underline;
+  }
+
+  .reveal {
+    animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  .reveal-2 {
+    animation-delay: 0.12s;
+  }
+
+  .reveal-3 {
+    animation-delay: 0.24s;
+  }
+
+  /* A light band that sweeps down the hero photo, like a scanner. */
+  .scan {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      transparent 0 46%,
+      color-mix(in srgb, var(--accent) 35%, transparent) 50%,
+      transparent 54% 100%
+    );
+    background-size: 100% 220%;
+    animation: scan 5s linear infinite;
+    mix-blend-mode: screen;
+    pointer-events: none;
+  }
+
+  /* The tinted backdrop a project's screenshot rises from (cards and documentation pages). */
+  .project-stage {
+    background:
+      radial-gradient(
+        120% 100% at 0% 0%,
+        color-mix(in srgb, var(--project) 24%, transparent),
+        transparent 62%
+      ),
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px),
+      color-mix(in srgb, var(--project) 6%, var(--surface));
+    background-size:
+      auto,
+      24px 24px,
+      24px 24px,
+      auto;
+  }
+
+  /* "Live" status dot. */
+  .live-dot {
+    position: relative;
+  }
+
+  .live-dot::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    background: currentColor;
+    animation: ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  .reel {
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+  }
+
+  .reel > figure {
+    scroll-snap-align: start;
+  }
+
+  dialog.lightbox {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    max-width: 100vw;
+    max-height: 100vh;
+    margin: 0;
+  }
+
+  dialog.lightbox::backdrop {
+    background: rgb(5 12 16 / 0.88);
+  }
+
+  /* The globe (drawn by src/lib/globe/globe-renderer.ts). */
+  .globe {
+    touch-action: none;
+    cursor: grab;
+  }
+
+  .globe:active {
+    cursor: grabbing;
+  }
+
+  .globe .ocean {
+    fill: var(--raised);
+    stroke: var(--line);
+  }
+
+  .globe .grat {
+    fill: none;
+    stroke: var(--line);
+    stroke-width: 0.6;
+  }
+
+  .globe .land {
+    fill: var(--surface);
+    stroke: var(--line);
+    stroke-width: 0.5;
+  }
+
+  .globe .visited {
+    fill: var(--accent);
+    stroke: var(--surface);
+    stroke-width: 0.6;
+    cursor: pointer;
+    transition: fill 0.2s;
+  }
+
+  .globe .visited.trip {
+    fill: var(--warm);
+  }
+
+  .globe .visited.on {
+    fill: var(--ink);
+  }
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(14px);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes scan {
+  from {
+    background-position: 0 100%;
+  }
+  to {
+    background-position: 0 -120%;
+  }
+}
+
+@keyframes ping {
+  75%,
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal,
+  .scan,
+  .live-dot::after {
+    animation: none;
+  }
+
+  * {
+    transition: none !important;
+  }
+}
