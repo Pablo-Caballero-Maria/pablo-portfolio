@@ -2,10 +2,10 @@ import Link from "next/link";
 
 import type { Project } from "@/content/projects";
 
-import { TagList } from "../ui/tag-list";
-import { ProjectActions } from "./project-actions";
+import { TagList } from "../ui/TagList";
+import { ProjectActions } from "./ProjectActions";
 import { projectHueStyle } from "./project-hue";
-import { ProjectVisual } from "./project-visual";
+import { ProjectVisual } from "./ProjectVisual";
 
 interface ProjectCardProps {
   project: Project;

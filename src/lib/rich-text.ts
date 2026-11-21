@@ -4,7 +4,7 @@
  *   **bold**   *emphasis*   `code`   [label](https://example.com)
  *
  * Markers don't nest; anything that isn't a complete marker is kept as text. Rendered by
- * src/components/ui/rich-text.tsx.
+ * src/components/ui/RichText.tsx.
  */
 
 export type InlineNode =

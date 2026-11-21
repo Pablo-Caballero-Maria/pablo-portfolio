@@ -3,13 +3,13 @@ import { describe, expect, it, vi } from "vitest";
 
 import ProjectPage, { generateMetadata, generateStaticParams } from "@/app/projects/[slug]/page";
 import HomePage from "@/app/page";
-import { DocSectionView } from "@/components/projects/doc-blocks";
-import { RichText } from "@/components/ui/rich-text";
+import { DocSectionView } from "@/components/projects/DocBlocks";
+import { RichText } from "@/components/ui/RichText";
 import { navigation } from "@/content/profile";
 import { projects } from "@/content/projects";
 
 // The globe downloads d3 and the world map; the home page test only needs the rest.
-vi.mock("@/components/home/globe", () => ({ Globe: () => null }));
+vi.mock("@/components/home/Globe", () => ({ Globe: () => null }));
 
 function pageProps(slug: string) {
   return { params: Promise.resolve({ slug }), searchParams: Promise.resolve({}) };

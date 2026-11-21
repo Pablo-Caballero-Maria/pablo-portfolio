@@ -194,7 +194,7 @@
     transform: scaleX(1);
   }
 
-  /* Experience filter (src/components/home/experience-filter.tsx): dim the other categories. */
+  /* Experience filter (src/components/home/ExperienceFilter.tsx): dim the other categories. */
   .timeline > li {
     transition:
       opacity 0.3s,

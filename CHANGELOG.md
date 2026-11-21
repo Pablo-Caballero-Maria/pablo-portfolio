@@ -13,6 +13,8 @@ All notable changes to the portfolio are documented here. The format follows
 - The icons are `lucide-react` (1.75.0, the version the other websites use) instead of the site's own set
   (`components/ui/icons.tsx`); GitHub's mark, which lucide doesn't have, stays an inline SVG
   (`components/ui/GitHubIcon.tsx`).
+- The component files are named in PascalCase (`home/Hero.tsx`, `projects/ProjectCard.tsx`…), as in the other
+  websites; so is the project card's test (`tests/components/ProjectCard.test.tsx`).
 
 ## [2.3.0] - 2026-11-21
 

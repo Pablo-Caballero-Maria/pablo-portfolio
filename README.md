@@ -158,8 +158,8 @@ A few decisions worth knowing:
 3. Add it to the list in `src/content/projects/index.ts`, and a hue for it in `ProjectHue` and in `globals.css`
    (`--hue-<name>`, light and dark).
 4. Update the tests that name the projects (`tests/content/projects.test.ts`,
-   `tests/components/project-card.test.tsx`, `e2e/home.spec.ts`, `e2e/projects.spec.ts`) and the home page's
-   introduction to the projects (`src/components/home/projects.tsx`).
+   `tests/components/ProjectCard.test.tsx`, `e2e/home.spec.ts`, `e2e/projects.spec.ts`) and the home page's
+   introduction to the projects (`src/components/home/Projects.tsx`).
 
 `npm test` then checks the new content, and the page appears at `/projects/<slug>`. The wiki has a longer guide:
 [Adding a project](https://github.com/Pablo-Caballero-Maria/pablo-portfolio/wiki/Adding-a-project).
@@ -193,7 +193,7 @@ Vercel builds the site on every push (`vercel.json` pins the Next.js framework).
 sitemap use `SITE_URL` when set, otherwise Vercel's production domain.
 
 The production build also includes **Vercel Web Analytics** (page views, without cookies) and **Speed Insights**
-(Core Web Vitals of real visits). `src/components/layout/vercel-telemetry.tsx` renders them only when Vercel makes
+(Core Web Vitals of real visits). `src/components/layout/VercelTelemetry.tsx` renders them only when Vercel makes
 the build (`VERCEL=1`): their scripts only exist on Vercel (under `/_vercel/…` or a first-party path of the
 project), so local runs and CI, which build without `VERCEL`, load neither.
 

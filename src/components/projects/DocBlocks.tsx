@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import type { DocBlock, DocSection } from "@/content/projects";
 
-import { RichText } from "../ui/rich-text";
+import { RichText } from "../ui/RichText";
 
 function Block({ block }: { block: DocBlock }) {
   switch (block.kind) {

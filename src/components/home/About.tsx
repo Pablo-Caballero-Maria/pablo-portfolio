@@ -1,6 +1,6 @@
 import { about } from "@/content/profile";
 
-import { SectionHeading } from "../ui/section-heading";
+import { SectionHeading } from "../ui/SectionHeading";
 
 export function About() {
   return (

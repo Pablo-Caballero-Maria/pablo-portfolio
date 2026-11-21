@@ -4,10 +4,10 @@ import { experience, experienceFilters, publication } from "@/content/experience
 import type { ExperienceItem } from "@/content/types";
 import { countByCategory } from "@/lib/experience";
 
-import { RichText } from "../ui/rich-text";
-import { SectionHeading } from "../ui/section-heading";
-import { TagList } from "../ui/tag-list";
-import { ExperienceFilter } from "./experience-filter";
+import { RichText } from "../ui/RichText";
+import { SectionHeading } from "../ui/SectionHeading";
+import { TagList } from "../ui/TagList";
+import { ExperienceFilter } from "./ExperienceFilter";
 
 function TimelineEntry({ item }: { item: ExperienceItem }) {
   const tech = item.category === "tech";

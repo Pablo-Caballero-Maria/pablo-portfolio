@@ -1,7 +1,7 @@
 import { profile } from "@/content/profile";
 
 import { Download } from "lucide-react";
-import { CopyButton } from "./copy-button";
+import { CopyButton } from "./CopyButton";
 
 const row = { background: "color-mix(in srgb, var(--bg) 8%, var(--ink))" };
 const soft = { color: "color-mix(in srgb, var(--bg) 75%, var(--ink))" };

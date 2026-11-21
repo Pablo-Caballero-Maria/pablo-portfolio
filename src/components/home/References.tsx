@@ -2,9 +2,9 @@ import { academicReferences, volunteerReferences, workaway } from "@/content/ref
 import type { AcademicReference, VolunteerReference } from "@/content/types";
 
 import { ChevronDown, Quote } from "lucide-react";
-import { RichText } from "../ui/rich-text";
-import { SectionHeading } from "../ui/section-heading";
-import { Tabs } from "../ui/tabs";
+import { RichText } from "../ui/RichText";
+import { SectionHeading } from "../ui/SectionHeading";
+import { Tabs } from "../ui/Tabs";
 
 function LetterCard({ reference }: { reference: AcademicReference }) {
   return (

@@ -2,8 +2,8 @@ import { awards, languages, skillGroups, workStyle } from "@/content/education";
 import type { Language } from "@/content/types";
 
 import { ChevronDown } from "lucide-react";
-import { RichText } from "../ui/rich-text";
-import { SectionHeading } from "../ui/section-heading";
+import { RichText } from "../ui/RichText";
+import { SectionHeading } from "../ui/SectionHeading";
 
 const CEFR = ["A1", "A2", "B1", "B2", "C1", "C2"] as const;
 

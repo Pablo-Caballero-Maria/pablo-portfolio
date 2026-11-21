@@ -1,7 +1,7 @@
 import { projects } from "@/content/projects";
 
-import { ProjectCard } from "../projects/project-card";
-import { SectionHeading } from "../ui/section-heading";
+import { ProjectCard } from "../projects/ProjectCard";
+import { SectionHeading } from "../ui/SectionHeading";
 
 /** The projects grid on the home page; each card links to its documentation page. */
 export function Projects() {

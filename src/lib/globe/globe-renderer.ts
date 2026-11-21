@@ -4,7 +4,7 @@
  *
  * It works outside React on purpose: the globe spins every frame, and setting ~180 `d`
  * attributes directly is much cheaper than re-rendering them through React. The React wrapper
- * (src/components/home/globe.tsx) only creates it, forwards the selected country and destroys it.
+ * (src/components/home/Globe.tsx) only creates it, forwards the selected country and destroys it.
  *
  * Interaction: it spins on its own (unless the visitor prefers reduced motion), stops while a
  * country is hovered, follows the pointer when dragged, and turns to a country on `focus()`.

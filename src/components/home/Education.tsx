@@ -1,8 +1,8 @@
 import { degree, highSchool, otherEducation, upcomingEducation } from "@/content/education";
 import type { EducationItem } from "@/content/types";
 
-import { RichText } from "../ui/rich-text";
-import { SectionHeading } from "../ui/section-heading";
+import { RichText } from "../ui/RichText";
+import { SectionHeading } from "../ui/SectionHeading";
 
 function ScoreBar({ value, max, label }: { value: number; max: number; label: string }) {
   return (

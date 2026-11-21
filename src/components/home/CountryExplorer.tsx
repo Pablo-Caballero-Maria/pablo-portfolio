@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 
 import type { Country } from "@/content/types";
 
-import { Globe, type GlobeHandle } from "./globe";
+import { Globe, type GlobeHandle } from "./Globe";
 
 interface CountryExplorerProps {
   countries: readonly Country[];

@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { DocSectionView } from "@/components/projects/doc-blocks";
-import { DocToc } from "@/components/projects/doc-toc";
-import { ProjectActions } from "@/components/projects/project-actions";
+import { DocSectionView } from "@/components/projects/DocBlocks";
+import { DocToc } from "@/components/projects/DocToc";
+import { ProjectActions } from "@/components/projects/ProjectActions";
 import { projectHueStyle } from "@/components/projects/project-hue";
-import { ProjectPager } from "@/components/projects/project-pager";
-import { ProjectVisual } from "@/components/projects/project-visual";
+import { ProjectPager } from "@/components/projects/ProjectPager";
+import { ProjectVisual } from "@/components/projects/ProjectVisual";
 import { ArrowLeft } from "lucide-react";
-import { TagList } from "@/components/ui/tag-list";
+import { TagList } from "@/components/ui/TagList";
 import { displayUrl, getAdjacentProjects, getProject, projects } from "@/content/projects";
 
 /** One page per project, all prerendered; any other slug is a 404. */

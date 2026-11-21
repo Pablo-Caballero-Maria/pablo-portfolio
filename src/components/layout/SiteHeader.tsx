@@ -2,9 +2,9 @@ import Link from "next/link";
 
 import { navigation, profile } from "@/content/profile";
 
-import { MobileMenu } from "./mobile-menu";
-import { PrimaryNav } from "./primary-nav";
-import { ThemeToggle } from "./theme-toggle";
+import { MobileMenu } from "./MobileMenu";
+import { PrimaryNav } from "./PrimaryNav";
+import { ThemeToggle } from "./ThemeToggle";
 
 /** The sticky header on every page: logo, section links, theme toggle and the CV. */
 export function SiteHeader() {

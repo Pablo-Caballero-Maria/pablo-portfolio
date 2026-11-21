@@ -4,9 +4,9 @@ import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import type { ReactNode } from "react";
 
-import { SiteFooter } from "@/components/layout/site-footer";
-import { SiteHeader } from "@/components/layout/site-header";
-import { VercelTelemetry } from "@/components/layout/vercel-telemetry";
+import { SiteFooter } from "@/components/layout/SiteFooter";
+import { SiteHeader } from "@/components/layout/SiteHeader";
+import { VercelTelemetry } from "@/components/layout/VercelTelemetry";
 import { profile } from "@/content/profile";
 import { siteUrl } from "@/lib/site";
 import { THEME_INIT_SCRIPT } from "@/lib/theme";

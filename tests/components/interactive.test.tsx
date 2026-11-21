@@ -2,12 +2,12 @@ import { act, fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
-import { CopyButton } from "@/components/home/copy-button";
-import { ExperienceFilter } from "@/components/home/experience-filter";
-import { PhotoReel } from "@/components/home/photo-reel";
-import { MobileMenu } from "@/components/layout/mobile-menu";
-import { ThemeToggle } from "@/components/layout/theme-toggle";
-import { Tabs } from "@/components/ui/tabs";
+import { CopyButton } from "@/components/home/CopyButton";
+import { ExperienceFilter } from "@/components/home/ExperienceFilter";
+import { PhotoReel } from "@/components/home/PhotoReel";
+import { MobileMenu } from "@/components/layout/MobileMenu";
+import { ThemeToggle } from "@/components/layout/ThemeToggle";
+import { Tabs } from "@/components/ui/Tabs";
 import { navigation } from "@/content/profile";
 import { photos } from "@/content/world";
 import { THEME_STORAGE_KEY } from "@/lib/theme";

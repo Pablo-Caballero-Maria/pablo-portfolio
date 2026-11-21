@@ -1,8 +1,8 @@
 import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { Projects } from "@/components/home/projects";
-import { ProjectCard } from "@/components/projects/project-card";
+import { Projects } from "@/components/home/Projects";
+import { ProjectCard } from "@/components/projects/ProjectCard";
 import { getProject, projects } from "@/content/projects";
 
 function card(slug: string) {

@@ -1,8 +1,8 @@
 import { countries, photos } from "@/content/world";
 
-import { SectionHeading } from "../ui/section-heading";
-import { CountryExplorer } from "./country-explorer";
-import { PhotoReel } from "./photo-reel";
+import { SectionHeading } from "../ui/SectionHeading";
+import { CountryExplorer } from "./CountryExplorer";
+import { PhotoReel } from "./PhotoReel";
 
 export function World() {
   return (
