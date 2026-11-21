@@ -8,6 +8,9 @@ All notable changes to the portfolio are documented here. The format follows
 
 ### Changed
 
+- The sinophile page in step with its repository: 118 Vitest tests, now with component tests (Testing Library),
+  and Prettier in its CI.
+
 - Tailwind CSS is compiled by `@tailwindcss/turbopack`, declared in `next.config.ts` as in the other websites,
   instead of `@tailwindcss/postcss` and `postcss.config.mjs`. The CSS it produces is byte for byte the same.
 - The icons are `lucide-react` (1.75.0, the version the other websites use) instead of the site's own set
