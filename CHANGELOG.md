@@ -6,6 +6,11 @@ All notable changes to the portfolio are documented here. The format follows
 
 ## [Unreleased]
 
+### Changed
+
+- Tailwind CSS is compiled by `@tailwindcss/turbopack`, declared in `next.config.ts` as in the other websites,
+  instead of `@tailwindcss/postcss` and `postcss.config.mjs`. The CSS it produces is byte for byte the same.
+
 ## [2.3.0] - 2026-11-21
 
 ### Added
