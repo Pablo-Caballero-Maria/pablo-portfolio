@@ -194,7 +194,8 @@ sitemap use `SITE_URL` when set, otherwise Vercel's production domain.
 
 The production build also includes **Vercel Web Analytics** (page views, without cookies) and **Speed Insights**
 (Core Web Vitals of real visits). `src/components/layout/vercel-telemetry.tsx` renders them only when Vercel makes
-the build (`VERCEL=1`), so local runs and CI don't load their `/_vercel/…` scripts.
+the build (`VERCEL=1`): their scripts only exist on Vercel (under `/_vercel/…` or a first-party path of the
+project), so local runs and CI, which build without `VERCEL`, load neither.
 
 ## Documentation
 
