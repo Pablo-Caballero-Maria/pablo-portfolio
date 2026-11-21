@@ -12,10 +12,10 @@ test.describe("home page", () => {
     }
   });
 
-  test("shows the four projects, with live links only for the deployed ones", async ({ page }) => {
+  test("shows the five projects, with live links only for the deployed ones", async ({ page }) => {
     await page.goto("/#projects");
     const section = page.getByRole("region", { name: "Things I've built" });
-    await expect(section.getByRole("article")).toHaveCount(4);
+    await expect(section.getByRole("article")).toHaveCount(5);
 
     const sinophile = section.getByRole("article", { name: "sinophile" });
     await expect(sinophile.getByRole("link", { name: /visit site/i })).toHaveAttribute(
@@ -26,6 +26,11 @@ test.describe("home page", () => {
     await expect(piano.getByRole("link", { name: /visit site/i })).toHaveAttribute(
       "href",
       "https://piano-web-virid.vercel.app",
+    );
+    const heart = section.getByRole("article", { name: "Edge AI for heart failure" });
+    await expect(heart.getByRole("link", { name: /visit site/i })).toHaveAttribute(
+      "href",
+      "https://simulador-iot-icc.vercel.app",
     );
     for (const name of ["Molecular activity prediction", "Milan CDR analytics"]) {
       const card = section.getByRole("article", { name });

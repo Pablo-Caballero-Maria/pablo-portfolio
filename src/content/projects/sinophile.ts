@@ -123,8 +123,8 @@ export const sinophile: Project = {
         {
           kind: "list",
           items: [
-            "**Tests** with Vitest: the data files, the learning logic and the API, run against an in-memory MongoDB.",
-            "`npm run validate` checks every lesson folder; type checking and ESLint run on every change.",
+            "**115 tests** with Vitest: the data files, the learning logic and the API, run against an in-memory MongoDB.",
+            "`npm run validate` checks every lesson folder. GitHub Actions validates the data, runs ESLint, type checking and the tests with coverage, and builds the site on every push, alongside CodeQL and Dependabot.",
             "Open data: CC-CEDICT (CC BY-SA 4.0), Make Me a Hanzi stroke data, Hanzi Writer and pinyin-pro.",
           ],
         },

@@ -2,6 +2,7 @@
  * The projects, in the order the home page shows them (deployed ones first), and lookups for
  * the documentation pages.
  */
+import { heart } from "./heart";
 import { milan } from "./milan";
 import { molecula } from "./molecula";
 import { piano } from "./piano";
@@ -10,7 +11,7 @@ import type { Project } from "./types";
 
 export type { DocBlock, DocSection, Figure, Project } from "./types";
 
-export const projects: readonly Project[] = [sinophile, piano, molecula, milan];
+export const projects: readonly Project[] = [sinophile, piano, heart, molecula, milan];
 
 export function getProject(slug: string): Project | undefined {
   return projects.find((project) => project.slug === slug);

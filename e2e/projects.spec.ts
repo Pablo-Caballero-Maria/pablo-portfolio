@@ -3,6 +3,11 @@ import { expect, test } from "./fixtures";
 const pages = [
   { slug: "sinophile", name: "sinophile", live: "https://sinophile.vercel.app" },
   { slug: "piano", name: "ESP32 Piano", live: "https://piano-web-virid.vercel.app" },
+  {
+    slug: "heart-failure-ai",
+    name: "Edge AI for heart failure",
+    live: "https://simulador-iot-icc.vercel.app",
+  },
   { slug: "molecular-activity", name: "Molecular activity prediction", live: null },
   { slug: "milan-cdr", name: "Milan CDR analytics", live: null },
 ];

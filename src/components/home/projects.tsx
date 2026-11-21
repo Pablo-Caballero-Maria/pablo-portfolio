@@ -14,8 +14,9 @@ export function Projects() {
           <div className="max-w-[60ch]">
             <SectionHeading id="projects-title" eyebrow="Projects" title="Things I've built" />
             <p className="mt-3 text-muted">
-              Two web apps that are live and two data studies from university coursework. Each one has a short
-              write-up of what it does, how it&apos;s built and what came out of it.
+              Three live web apps (one of them a neural network that reads the heart) and two data studies
+              from university coursework. Each one has a short write-up of what it does, how it&apos;s built
+              and what came out of it.
             </p>
           </div>
           <p className="flex flex-wrap gap-4 font-mono text-xs text-muted">

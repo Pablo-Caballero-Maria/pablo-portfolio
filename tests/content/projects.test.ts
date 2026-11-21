@@ -52,10 +52,11 @@ function imagesOf(project: Project) {
 }
 
 describe("the projects", () => {
-  it("are the four in the portfolio, deployed ones first", () => {
+  it("are the five in the portfolio, deployed ones first", () => {
     expect(projects.map((project) => project.slug)).toEqual([
       "sinophile",
       "piano",
+      "heart-failure-ai",
       "molecular-activity",
       "milan-cdr",
     ]);
@@ -64,6 +65,7 @@ describe("the projects", () => {
   it("link to the live site only when they are deployed", () => {
     expect(liveUrl(getProject("sinophile")!)).toBe("https://sinophile.vercel.app");
     expect(liveUrl(getProject("piano")!)).toBe("https://piano-web-virid.vercel.app");
+    expect(liveUrl(getProject("heart-failure-ai")!)).toBe("https://simulador-iot-icc.vercel.app");
     expect(liveUrl(getProject("molecular-activity")!)).toBeNull();
     expect(liveUrl(getProject("milan-cdr")!)).toBeNull();
   });

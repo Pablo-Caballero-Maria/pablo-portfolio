@@ -20,7 +20,7 @@ export const piano: Project = {
     height: 750,
   },
   highlights: [
-    { value: "194", label: "automated tests, 18 of them run on the board" },
+    { value: "196", label: "automated tests, 18 of them run on the board" },
     { value: "0", label: "internet needed for a lesson in the classroom" },
     { value: "AES-256", label: "GCM encryption of every stored record" },
   ],
@@ -179,17 +179,21 @@ export const piano: Project = {
           rows: [
             [
               "pytest",
-              "100",
+              "102",
               "The shared core, the laptop app end to end (REST and WebSocket with the board's real storage code), updates against temporary git repositories, and an integration test through a real MQTT broker",
             ],
             [
               "…on the board",
-              "18 of the 100",
+              "18 of the 102",
               "Written for MicroPython: pytest runs them on the laptop and the board runs them on itself before installing an update",
             ],
             ["Vitest", "90", "Website logic, services, the Studio engine and components"],
             ["Playwright", "4", "End to end in Chrome against the laptop app with a simulated board"],
           ],
+        },
+        {
+          kind: "paragraph",
+          text: "GitHub Actions runs the same suites on every push too, with coverage, a real MongoDB and the end-to-end tests, and CodeQL scans the Python, the TypeScript and the workflows; but the teacher's PCs don't rely on it, and test every commit themselves before installing it.",
         },
       ],
     },

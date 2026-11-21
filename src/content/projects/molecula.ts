@@ -24,7 +24,17 @@ export const molecula: Project = {
     { value: "7,015", label: "molecules in the larger database" },
     { value: "7", label: "classifiers compared with repeated CV" },
   ],
-  stack: ["Python 3.14", "scikit-learn", "Optuna", "SHAP", "RDKit", "MongoDB", "Plotly", "uv · ruff · ty"],
+  stack: [
+    "Python 3.14",
+    "scikit-learn",
+    "Optuna",
+    "SHAP",
+    "RDKit",
+    "MongoDB",
+    "Plotly",
+    "pytest",
+    "uv · ruff · ty",
+  ],
   sections: [
     {
       id: "overview",
@@ -150,6 +160,25 @@ export const molecula: Project = {
           kind: "callout",
           title: "Takeaway",
           text: "The quality of a QSAR model depends far more on the data than on the algorithm: seven classifiers fit within a few hundredths on CDS16, and all of them drop on CDS29. The right metric, stratification, repetition and an untouched test set are what make an estimate credible.",
+        },
+      ],
+    },
+    {
+      id: "reproducibility",
+      title: "Reproducible and tested",
+      blocks: [
+        {
+          kind: "paragraph",
+          text: "**74 pytest tests** check the work. 48 unit tests cover the metrics, the models and their Optuna search spaces, the noise and outlier detectors, Tanimoto similarity, feature selection and the figures; 26 integration tests restore CDS16 and CDS29 from the course's backup into a temporary MongoDB, reading the BSON directly so `mongorestore` isn't needed, and check that the scripts reproduce what was handed in.",
+        },
+        {
+          kind: "list",
+          items: [
+            "Phase 1 prints its eleven reports byte for byte as in `fase1_salida.txt`, and the schema rejects every kind of invalid document.",
+            "The random forest rebuilt from Optuna's best parameters gives exactly the delivered test GMean (0.632) and AUROC (0.717).",
+            "RDKit's Morgan fingerprints match the stored bits, and the similarity pipeline returns the same molecules as the exhaustive scan.",
+            "GitHub Actions runs Ruff, ty and the tests with coverage against a MongoDB 8 service on every push, alongside CodeQL and Dependabot.",
+          ],
         },
       ],
     },

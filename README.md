@@ -6,8 +6,9 @@ My portfolio and CV: a Next.js site, statically generated and deployed on Vercel
 - **Home page** (`/`): about, experience, projects, education, skills, an interactive globe of the
   countries I've lived and worked in, photos, references and contact.
 - **Project documentation** (`/projects/<slug>`): one page per project, with how it works, figures
-  and results. Two are live web apps (sinophile, ESP32 Piano), with links to the deployed sites;
-  two are data-analysis coursework that runs locally (molecular activity prediction, Milan CDR).
+  and results. Three are live web apps (sinophile, ESP32 Piano and Edge AI for heart failure, a
+  neural network on an ECG wearable inside a 3D simulator), with links to the deployed sites; two
+  are data-analysis coursework that runs locally (molecular activity prediction, Milan CDR).
 
 ## Development
 

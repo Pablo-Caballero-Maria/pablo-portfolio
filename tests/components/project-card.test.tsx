@@ -56,7 +56,7 @@ describe("Projects section", () => {
   it("shows a card per project and counts the live ones", () => {
     render(<Projects />);
     expect(screen.getAllByRole("article")).toHaveLength(projects.length);
-    expect(screen.getByText("2 live")).toBeInTheDocument();
+    expect(screen.getByText("3 live")).toBeInTheDocument();
     expect(screen.getByText("2 run locally")).toBeInTheDocument();
   });
 });

@@ -105,7 +105,7 @@ coll.create_index([("cellid", 1), ("time", 1)])`,
       blocks: [
         {
           kind: "paragraph",
-          text: "Instead of six queries, one `$group` by cell feeds a `$facet` that ranks all 9,998 cells by every metric in parallel. Cell **5161**, diagonally next to the Duomo's, has the most activity overall, the most internet and the most traffic with other countries, and the ten cells that talk most with abroad are all in the historic centre. The exception is outgoing SMS, led by cell 4756, which sends three times as many as it receives (the city as a whole receives almost twice what it sends): probably a bulk SMS sender.",
+          text: "Instead of six queries, one `$group` by cell feeds a `$facet` that ranks all 9,998 cells by every metric in parallel. Cell **5161**, diagonally next to the Duomo's, has the most activity overall, the most internet and the most traffic with other countries, and the ten cells that talk most with abroad are all in the historic centre. Its western neighbour, 5059, leads received SMS and calls in both directions. Outgoing SMS are the exception, led by cell 4756, which sends three times as many as it receives (the city as a whole receives almost twice what it sends): probably a bulk SMS sender.",
         },
         {
           kind: "code",
@@ -197,7 +197,7 @@ coll.create_index([("cellid", 1), ("time", 1)])`,
           kind: "list",
           items: [
             "Unit tests and doctests with pytest, plus **integration tests** that build a synthetic week in a temporary database, run every pipeline and compare its output with the same aggregation computed in Python (skipped when no MongoDB server is available).",
-            "Lint and formatting with ruff, types checked with ty, coverage with pytest-cov.",
+            "Lint and formatting with ruff, types checked with ty, 97 % coverage with pytest-cov. GitHub Actions runs all of it against a MongoDB 8 service and builds the package on every push, alongside CodeQL and Dependabot.",
             "Data under ODbL 1.0, from the Telecom Italia Big Data Challenge (Harvard Dataverse, doi:10.7910/DVN/EGZHFV).",
           ],
         },

@@ -58,6 +58,7 @@
   /* One hue per project (text-safe on --surface and --bg in both themes). */
   --hue-sinophile: #c32f37;
   --hue-piano: #17784e;
+  --hue-heart: #0e7490;
   --hue-molecula: #5646d1;
   --hue-milan: #2160c4;
   --live: #15803d;
@@ -80,6 +81,7 @@
   --grid: rgb(86 196 222 / 0.06);
   --hue-sinophile: #ff7f84;
   --hue-piano: #52d39c;
+  --hue-heart: #4cc9df;
   --hue-molecula: #a99eff;
   --hue-milan: #74abff;
   --live: #4ade80;
@@ -101,6 +103,7 @@
     --grid: rgb(86 196 222 / 0.06);
     --hue-sinophile: #ff7f84;
     --hue-piano: #52d39c;
+    --hue-heart: #4cc9df;
     --hue-molecula: #a99eff;
     --hue-milan: #74abff;
     --live: #4ade80;

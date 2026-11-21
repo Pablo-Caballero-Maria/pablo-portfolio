@@ -5,7 +5,7 @@
 import type { ImageAsset } from "../types";
 
 /** Each project has its own hue; the colours are CSS tokens in globals.css (--hue-<name>). */
-export type ProjectHue = "sinophile" | "piano" | "molecula" | "milan";
+export type ProjectHue = "sinophile" | "piano" | "heart" | "molecula" | "milan";
 
 /** Where a project can be seen: deployed projects link to the live site. */
 export type Deployment = { kind: "live"; url: string } | { kind: "local"; note: string };
