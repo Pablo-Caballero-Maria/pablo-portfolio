@@ -8,7 +8,7 @@ import { ProjectActions } from "@/components/projects/project-actions";
 import { projectHueStyle } from "@/components/projects/project-hue";
 import { ProjectPager } from "@/components/projects/project-pager";
 import { ProjectVisual } from "@/components/projects/project-visual";
-import { ArrowLeftIcon } from "@/components/ui/icons";
+import { ArrowLeft } from "lucide-react";
 import { TagList } from "@/components/ui/tag-list";
 import { displayUrl, getAdjacentProjects, getProject, projects } from "@/content/projects";
 
@@ -52,7 +52,7 @@ export default async function ProjectPage(props: PageProps<"/projects/[slug]">) 
             href="/#projects"
             className="inline-flex items-center gap-1.5 font-mono text-xs text-muted hover:text-ink"
           >
-            <ArrowLeftIcon className="h-3.5 w-3.5" />
+            <ArrowLeft className="h-3.5 w-3.5" />
             All projects
           </Link>
           <div className="mt-8 grid items-end gap-10 lg:grid-cols-[1fr_1.05fr]">

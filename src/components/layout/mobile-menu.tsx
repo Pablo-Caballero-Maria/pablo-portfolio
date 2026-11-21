@@ -5,7 +5,7 @@ import { useEffect, useId, useState } from "react";
 
 import type { NavItem } from "@/content/types";
 
-import { MenuIcon } from "../ui/icons";
+import { Menu } from "lucide-react";
 
 interface MobileMenuProps {
   items: readonly NavItem[];
@@ -35,7 +35,7 @@ export function MobileMenu({ items }: MobileMenuProps) {
         aria-label={open ? "Close menu" : "Open menu"}
         onClick={() => setOpen((value) => !value)}
       >
-        <MenuIcon className="h-4 w-4" />
+        <Menu className="h-4 w-4" />
       </button>
       <div
         id={panelId}

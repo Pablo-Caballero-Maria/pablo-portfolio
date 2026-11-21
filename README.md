@@ -118,7 +118,7 @@ src/
     layout/             header (scroll-spy nav, mobile menu, theme toggle), footer, Vercel telemetry
     home/               one component per home section, plus its interactive parts
     projects/           project card, cover visual, documentation blocks, table of contents, pager
-    ui/                 icons, rich text, headings, tags, accessible tabs
+    ui/                 rich text, headings, tags, accessible tabs, the GitHub mark (other icons: lucide-react)
   hooks/                useScrollSpy
   lib/                  pure logic: rich-text parser, theme, globe maths and renderer, helpers
 tests/                  Vitest: lib/, content/ (data integrity) and components/

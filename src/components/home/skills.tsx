@@ -1,7 +1,7 @@
 import { awards, languages, skillGroups, workStyle } from "@/content/education";
 import type { Language } from "@/content/types";
 
-import { ChevronDownIcon } from "../ui/icons";
+import { ChevronDown } from "lucide-react";
 import { RichText } from "../ui/rich-text";
 import { SectionHeading } from "../ui/section-heading";
 
@@ -83,7 +83,7 @@ export function Skills() {
                 <span className="num text-muted">({awards.length})</span>
               </span>
             </span>
-            <ChevronDownIcon className="chev h-5 w-5 shrink-0 text-muted transition-transform" />
+            <ChevronDown className="chev h-5 w-5 shrink-0 text-muted transition-transform" />
           </summary>
           <ul className="grid gap-x-8 gap-y-3 border-t border-line p-6 text-sm md:grid-cols-2">
             {awards.map((award) => (

@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { ArrowLeftIcon } from "@/components/ui/icons";
+import { ArrowLeft } from "lucide-react";
 
 export default function NotFound() {
   return (
@@ -17,7 +17,7 @@ export default function NotFound() {
           href="/"
           className="mt-8 inline-flex items-center gap-2 rounded-md bg-ink px-5 py-3 font-semibold text-bg hover:opacity-90"
         >
-          <ArrowLeftIcon className="h-4 w-4" />
+          <ArrowLeft className="h-4 w-4" />
           Back to the home page
         </Link>
       </div>

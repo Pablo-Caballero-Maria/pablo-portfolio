@@ -1,6 +1,6 @@
 import { profile } from "@/content/profile";
 
-import { DownloadIcon } from "../ui/icons";
+import { Download } from "lucide-react";
 import { CopyButton } from "./copy-button";
 
 const row = { background: "color-mix(in srgb, var(--bg) 8%, var(--ink))" };
@@ -29,7 +29,7 @@ export function Contact() {
             download={profile.cv.downloadName}
             className="mt-8 inline-flex items-center gap-2 rounded-md bg-bg px-5 py-3 font-semibold text-ink hover:opacity-90"
           >
-            <DownloadIcon className="h-4 w-4" />
+            <Download className="h-4 w-4" />
             Download CV (PDF)
           </a>
         </div>

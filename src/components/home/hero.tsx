@@ -2,7 +2,8 @@ import Image from "next/image";
 
 import { profile, stats } from "@/content/profile";
 
-import { ArrowRightIcon, DownloadIcon, GitHubIcon } from "../ui/icons";
+import { ArrowRight, Download } from "lucide-react";
+import { GitHubIcon } from "../ui/GitHubIcon";
 
 const secondaryButton =
   "inline-flex items-center gap-2 rounded-md border border-line bg-surface px-5 py-3 font-semibold hover:border-accent";
@@ -29,7 +30,7 @@ export function Hero() {
               className="inline-flex items-center gap-2 rounded-md bg-ink px-5 py-3 font-semibold text-bg hover:opacity-90"
             >
               Get in touch
-              <ArrowRightIcon className="h-4 w-4" />
+              <ArrowRight className="h-4 w-4" />
             </a>
             <a href="#projects" className={secondaryButton}>
               See my projects
@@ -39,7 +40,7 @@ export function Hero() {
               GitHub
             </a>
             <a href={profile.cv.href} download={profile.cv.downloadName} className={secondaryButton}>
-              <DownloadIcon className="h-4 w-4" />
+              <Download className="h-4 w-4" />
               CV (PDF)
             </a>
           </div>

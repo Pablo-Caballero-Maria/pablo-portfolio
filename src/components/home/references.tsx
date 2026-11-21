@@ -1,7 +1,7 @@
 import { academicReferences, volunteerReferences, workaway } from "@/content/references";
 import type { AcademicReference, VolunteerReference } from "@/content/types";
 
-import { ChevronDownIcon, QuoteIcon } from "../ui/icons";
+import { ChevronDown, Quote } from "lucide-react";
 import { RichText } from "../ui/rich-text";
 import { SectionHeading } from "../ui/section-heading";
 import { Tabs } from "../ui/tabs";
@@ -9,7 +9,7 @@ import { Tabs } from "../ui/tabs";
 function LetterCard({ reference }: { reference: AcademicReference }) {
   return (
     <article className="flex flex-col rounded-xl border border-line bg-surface p-6">
-      <QuoteIcon className="h-7 w-7 text-accent" />
+      <Quote className="h-7 w-7 text-accent" fill="currentColor" />
       <blockquote className="mt-4 font-display text-xl leading-snug font-medium">
         &ldquo;{reference.quote}&rdquo;
       </blockquote>
@@ -28,7 +28,7 @@ function LetterCard({ reference }: { reference: AcademicReference }) {
       <details className="mt-5 border-t border-line pt-4">
         <summary className="flex items-center gap-2 text-sm font-semibold text-accent">
           Read full letter · {reference.date}
-          <ChevronDownIcon className="chev h-4 w-4 transition-transform" />
+          <ChevronDown className="chev h-4 w-4 transition-transform" />
         </summary>
         <div className="letter mt-4 max-w-[65ch] text-sm text-muted">
           {reference.letter.map((paragraph, index) => (

@@ -3,7 +3,7 @@ import Image from "next/image";
 import { displayUrl, liveUrl } from "@/content/projects";
 import type { Project } from "@/content/projects";
 
-import { TerminalIcon } from "../ui/icons";
+import { Terminal } from "lucide-react";
 
 interface ProjectVisualProps {
   project: Project;
@@ -40,7 +40,7 @@ export function ProjectVisual({ project, sizes, preload = false, className = "" 
               </>
             ) : (
               <span className="flex items-center gap-1.5 truncate font-mono text-[11px] text-muted">
-                <TerminalIcon className="h-3.5 w-3.5 text-project" />
+                <Terminal className="h-3.5 w-3.5 text-project" />
                 {project.repository.split("/").pop()} · results
               </span>
             )}

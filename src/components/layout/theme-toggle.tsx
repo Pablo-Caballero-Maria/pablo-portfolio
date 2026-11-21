@@ -2,7 +2,7 @@
 
 import { browserStorage, oppositeTheme, resolveTheme, storeTheme } from "@/lib/theme";
 
-import { MoonIcon, SunIcon } from "../ui/icons";
+import { Moon, Sun } from "lucide-react";
 
 /**
  * Switches between light and dark and remembers the choice. Which icon shows is pure CSS (the
@@ -24,8 +24,8 @@ export function ThemeToggle() {
       className="grid h-9 w-9 place-items-center rounded-md border border-line bg-surface text-ink hover:border-accent"
       aria-label="Switch colour theme"
     >
-      <SunIcon className="hidden h-4 w-4 dark:block" />
-      <MoonIcon className="h-4 w-4 dark:hidden" />
+      <Sun className="hidden h-4 w-4 dark:block" />
+      <Moon className="h-4 w-4 dark:hidden" />
     </button>
   );
 }

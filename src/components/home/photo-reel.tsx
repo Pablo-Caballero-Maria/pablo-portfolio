@@ -6,7 +6,7 @@ import { useRef, useState } from "react";
 import type { Photo } from "@/content/types";
 import { formatPosition, wrapIndex } from "@/lib/cycle";
 
-import { ChevronLeftIcon, ChevronRightIcon } from "../ui/icons";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface PhotoReelProps {
   photos: readonly Photo[];
@@ -55,7 +55,7 @@ export function PhotoReel({ photos }: PhotoReelProps) {
             aria-label="Scroll photos left"
             onClick={() => scroll(-1)}
           >
-            <ChevronLeftIcon className="h-4 w-4" />
+            <ChevronLeft className="h-4 w-4" />
           </button>
           <button
             type="button"
@@ -63,7 +63,7 @@ export function PhotoReel({ photos }: PhotoReelProps) {
             aria-label="Scroll photos right"
             onClick={() => scroll(1)}
           >
-            <ChevronRightIcon className="h-4 w-4" />
+            <ChevronRight className="h-4 w-4" />
           </button>
         </div>
       </div>
@@ -153,7 +153,7 @@ export function PhotoReel({ photos }: PhotoReelProps) {
                 aria-label="Previous photo"
                 onClick={() => show(current - 1)}
               >
-                <ChevronLeftIcon className="h-5 w-5" />
+                <ChevronLeft className="h-5 w-5" />
               </button>
               <button
                 type="button"
@@ -161,7 +161,7 @@ export function PhotoReel({ photos }: PhotoReelProps) {
                 aria-label="Next photo"
                 onClick={() => show(current + 1)}
               >
-                <ChevronRightIcon className="h-5 w-5" />
+                <ChevronRight className="h-5 w-5" />
               </button>
             </div>
             <p className="max-w-3xl text-center text-white">{photo.alt}</p>

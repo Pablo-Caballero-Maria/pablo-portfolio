@@ -10,6 +10,9 @@ All notable changes to the portfolio are documented here. The format follows
 
 - Tailwind CSS is compiled by `@tailwindcss/turbopack`, declared in `next.config.ts` as in the other websites,
   instead of `@tailwindcss/postcss` and `postcss.config.mjs`. The CSS it produces is byte for byte the same.
+- The icons are `lucide-react` (1.75.0, the version the other websites use) instead of the site's own set
+  (`components/ui/icons.tsx`); GitHub's mark, which lucide doesn't have, stays an inline SVG
+  (`components/ui/GitHubIcon.tsx`).
 
 ## [2.3.0] - 2026-11-21
 

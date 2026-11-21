@@ -2,7 +2,8 @@ import Link from "next/link";
 
 import type { Project } from "@/content/projects";
 
-import { ArrowRightIcon, BookIcon, ExternalIcon, GitHubIcon } from "../ui/icons";
+import { ArrowRight, ArrowUpRight, BookOpen } from "lucide-react";
+import { GitHubIcon } from "../ui/GitHubIcon";
 
 const base =
   "inline-flex items-center gap-2 rounded-md px-4 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-offset-2";
@@ -24,7 +25,7 @@ export function ProjectActions({ project, withDocs = true, className = "" }: Pro
       {deployment.kind === "live" && (
         <a href={deployment.url} target="_blank" rel="noopener noreferrer" className={primary}>
           Visit site
-          <ExternalIcon className="h-4 w-4" />
+          <ArrowUpRight className="h-4 w-4" />
           <span className="sr-only">(opens {project.name} in a new tab)</span>
         </a>
       )}
@@ -34,9 +35,9 @@ export function ProjectActions({ project, withDocs = true, className = "" }: Pro
           className={deployment.kind === "live" ? secondary : primary}
           aria-label={`Documentation for ${project.name}`}
         >
-          <BookIcon className="h-4 w-4" />
+          <BookOpen className="h-4 w-4" />
           Documentation
-          <ArrowRightIcon className="h-4 w-4" />
+          <ArrowRight className="h-4 w-4" />
         </Link>
       )}
       <a href={project.repository} target="_blank" rel="noopener noreferrer" className={secondary}>
