@@ -1,0 +1,11 @@
+name: "Suggestion"
+description: "An idea to improve the site."
+title: "[Idea] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: proposal
+    attributes:
+      label: "What you suggest, and why"
+    validations:
+      required: true

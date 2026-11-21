@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: "Security vulnerability"
+    url: https://github.com/Pablo-Caballero-Maria/pablo-portfolio/security/advisories/new
+    about: "Report it privately, never in a public issue."
+  - name: "Documentation (wiki)"
+    url: https://github.com/Pablo-Caballero-Maria/pablo-portfolio/wiki
+    about: "How the site is built, how to add a project, testing and deployment."
+  - name: "Live site"
+    url: https://pablo-portfolio-woad.vercel.app
+    about: "Check the latest version before reporting."

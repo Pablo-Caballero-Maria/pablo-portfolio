@@ -1,0 +1,25 @@
+name: "Content correction"
+description: "A fact, figure or link on the site is wrong or out of date (for example, it no longer matches a project's repository)."
+title: "[Content] "
+labels: ["documentation"]
+body:
+  - type: input
+    id: where
+    attributes:
+      label: "Page and section"
+      placeholder: "e.g. /projects/milan-cdr → Busiest cells"
+    validations:
+      required: true
+  - type: textarea
+    id: wrong
+    attributes:
+      label: "What it says"
+    validations:
+      required: true
+  - type: textarea
+    id: right
+    attributes:
+      label: "What it should say, and the source"
+      placeholder: "e.g. the project's README, its report or a result file, with a link"
+    validations:
+      required: true

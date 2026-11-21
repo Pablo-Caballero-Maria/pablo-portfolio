@@ -1,0 +1,46 @@
+name: "Bug report"
+description: "Something on the site doesn't work or looks broken."
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting it! For a **security** problem, don't use this form: follow [SECURITY.md](../blob/main/SECURITY.md).
+  - type: input
+    id: page
+    attributes:
+      label: "Page"
+      placeholder: "e.g. https://pablo-portfolio-woad.vercel.app/projects/piano"
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: "What happened"
+      description: "A screenshot helps a lot."
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: "Steps to reproduce"
+      placeholder: |
+        1. Open …
+        2. Click …
+  - type: input
+    id: env
+    attributes:
+      label: "Browser and device"
+      placeholder: "e.g. Safari on iPhone 15, Firefox 150 on Windows, dark theme"
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: "Before sending"
+      options:
+        - label: "I searched the open and closed issues and this isn't reported yet."
+          required: true
+        - label: "I agree to follow the [code of conduct](../blob/main/CODE_OF_CONDUCT.md)."
+          required: true

@@ -12,5 +12,11 @@ export default defineConfig({
     include: ["tests/**/*.test.{ts,tsx}"],
     setupFiles: ["tests/setup.ts"],
     restoreMocks: true,
+    coverage: {
+      provider: "v8",
+      include: ["src/**/*.{ts,tsx}"],
+      exclude: ["src/app/**/{robots,sitemap}.ts"],
+      reporter: ["text-summary", "json-summary", "lcov", "html"],
+    },
   },
 });

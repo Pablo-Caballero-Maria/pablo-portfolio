@@ -23,7 +23,16 @@ export const sinophile: Project = {
     { value: "108k", label: "CC-CEDICT dictionary entries" },
     { value: "1–2 min", label: "from a new lesson file to the live site" },
   ],
-  stack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "MongoDB Atlas", "Vercel", "Vitest"],
+  stack: [
+    "Next.js 16",
+    "React 19",
+    "TypeScript",
+    "Tailwind CSS",
+    "MongoDB Atlas",
+    "Vercel",
+    "Vitest",
+    "Playwright",
+  ],
   sections: [
     {
       id: "overview",
@@ -123,8 +132,8 @@ export const sinophile: Project = {
         {
           kind: "list",
           items: [
-            "**115 tests** with Vitest: the data files, the learning logic and the API, run against an in-memory MongoDB.",
-            "`npm run validate` checks every lesson folder. GitHub Actions validates the data, runs ESLint, type checking and the tests with coverage, and builds the site on every push, alongside CodeQL and Dependabot.",
+            "**115 tests** with Vitest (the data files, the learning logic and the API, against an in-memory MongoDB) and **14 Playwright end-to-end tests** that drive the built site in Chromium: guest practice, every lesson in `data/`, the dictionary, and signing up, in and out against the real API and MongoDB.",
+            "`npm run validate` checks every lesson folder. GitHub Actions validates the data, runs ESLint, type checking, the tests with coverage, the build and the end-to-end tests on every push, alongside CodeQL and Dependabot. Vercel Web Analytics and Speed Insights measure visits and Core Web Vitals, without cookies.",
             "Open data: CC-CEDICT (CC BY-SA 4.0), Make Me a Hanzi stroke data, Hanzi Writer and pinyin-pro.",
           ],
         },

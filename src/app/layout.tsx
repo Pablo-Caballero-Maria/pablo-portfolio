@@ -6,6 +6,7 @@ import type { ReactNode } from "react";
 
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { VercelTelemetry } from "@/components/layout/vercel-telemetry";
 import { profile } from "@/content/profile";
 import { siteUrl } from "@/lib/site";
 import { THEME_INIT_SCRIPT } from "@/lib/theme";
@@ -67,6 +68,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <SiteHeader />
         <main id="main">{children}</main>
         <SiteFooter />
+        <VercelTelemetry />
       </body>
     </html>
   );

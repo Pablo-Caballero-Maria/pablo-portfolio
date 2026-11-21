@@ -20,7 +20,7 @@ export const piano: Project = {
     height: 750,
   },
   highlights: [
-    { value: "196", label: "automated tests, 18 of them run on the board" },
+    { value: "197", label: "automated tests, 18 of them run on the board" },
     { value: "0", label: "internet needed for a lesson in the classroom" },
     { value: "AES-256", label: "GCM encryption of every stored record" },
   ],
@@ -72,7 +72,7 @@ export const piano: Project = {
           items: [
             "**The teacher's laptop** is the fog node: nginx terminates HTTPS for `piano-esp32.duckdns.org`, a Python FastAPI app runs the live class, the buzzer queue, sync and updates, and Mosquitto is the MQTT broker between the app and the board. It keeps no database.",
             "**The board** (ESP32, MicroPython) plays the frequencies it receives and stores the class's accounts and melodies as encrypted blobs it cannot read.",
-            "**The cloud**: GitHub holds the code, DuckDNS and Let's Encrypt give the classroom a public name and certificate, MongoDB Atlas keeps all the data, Ably carries lessons over the internet and Vercel serves the same site and API.",
+            "**The cloud**: GitHub holds the code, DuckDNS and Let's Encrypt give the classroom a public name and certificate, MongoDB Atlas keeps all the data, Ably carries lessons over the internet and Vercel serves the same site and API. Only Vercel's copy carries Vercel Web Analytics and Speed Insights: the classroom's copy sends nothing anywhere.",
           ],
         },
         {
@@ -188,7 +188,11 @@ export const piano: Project = {
               "Written for MicroPython: pytest runs them on the laptop and the board runs them on itself before installing an update",
             ],
             ["Vitest", "90", "Website logic, services, the Studio engine and components"],
-            ["Playwright", "4", "End to end in Chrome against the laptop app with a simulated board"],
+            [
+              "Playwright",
+              "5",
+              "End to end in Chrome against the laptop app with a simulated board, including that the classroom page talks to nobody but the laptop",
+            ],
           ],
         },
         {
