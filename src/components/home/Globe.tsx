@@ -2,6 +2,7 @@
 
 import { type Ref, useEffect, useImperativeHandle, useRef, useState } from "react";
 
+import { Skeleton } from "@/components/ui/Skeleton";
 import type { Country } from "@/content/types";
 import type { GlobeHover, GlobeRenderer } from "@/lib/globe/globe-renderer";
 
@@ -116,6 +117,8 @@ export function Globe({ countries, activeId, onSelect, ref }: GlobeProps) {
         aria-label={`Rotating globe highlighting the ${countries.length} countries Pablo has studied, worked or travelled in`}
         data-ready={ready || undefined}
       />
+      {/* Skeleton loader while d3-geo and the world map download. */}
+      {!ready && <Skeleton className="absolute inset-[4%] rounded-full" />}
       {tooltip && (
         <div
           className="pointer-events-none absolute top-0 left-0 z-10 rounded-lg border border-line bg-surface p-3 text-sm shadow-lg"

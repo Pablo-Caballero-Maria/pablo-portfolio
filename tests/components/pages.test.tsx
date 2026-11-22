@@ -113,3 +113,20 @@ describe("RichText", () => {
     expect(screen.getByRole("link", { name: "in" })).not.toHaveAttribute("target");
   });
 });
+
+describe("offline and loading pages", () => {
+  it("the offline page explains what works without a connection and links home", async () => {
+    const { default: Offline } = await import("@/app/~offline/page");
+    render(<Offline />);
+    expect(screen.getByRole("heading", { level: 1, name: "No connection" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /Back to the home page/ })).toHaveAttribute("href", "/");
+  });
+
+  it("a project page shows a skeleton while it loads", async () => {
+    const { default: Loading } = await import("@/app/projects/[slug]/loading");
+    render(<Loading />);
+    const skeleton = screen.getByLabelText("Loading the project");
+    expect(skeleton).toHaveAttribute("aria-busy", "true");
+    expect(skeleton.querySelectorAll(".animate-pulse").length).toBeGreaterThan(5);
+  });
+});

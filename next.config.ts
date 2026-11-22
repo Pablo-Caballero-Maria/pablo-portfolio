@@ -6,7 +6,10 @@
  * resizing the photos and screenshots into AVIF/WebP for each screen width.
  *
  * The styles are Tailwind CSS v4 (src/app/globals.css), compiled by its Turbopack loader.
+ * withSerwist keeps esbuild, which builds the service worker (src/app/serwist/[path]/route.ts),
+ * out of the server bundle.
  */
+import { withSerwist } from "@serwist/turbopack";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -27,4 +30,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withSerwist(nextConfig);

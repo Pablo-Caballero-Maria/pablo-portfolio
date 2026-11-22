@@ -5,11 +5,12 @@ import { Bricolage_Grotesque, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/goo
 import type { ReactNode } from "react";
 
 import { SiteFooter } from "@/components/layout/SiteFooter";
+import { ServiceWorker } from "@/components/layout/ServiceWorker";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { VercelTelemetry } from "@/components/layout/VercelTelemetry";
 import { profile } from "@/content/profile";
 import { siteUrl } from "@/lib/site";
-import { THEME_INIT_SCRIPT } from "@/lib/theme";
+import { THEME_COLORS, THEME_INIT_SCRIPT } from "@/lib/theme";
 
 // Self-hosted by next/font at build time: no request to Google from the visitor's browser.
 // Bricolage Grotesque is variable in weight and optical size (opsz), so one file covers all.
@@ -39,10 +40,8 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f3f6f7" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a1318" },
-  ],
+  // The light theme's; the theme toggle switches it with the theme (src/lib/theme.ts).
+  themeColor: THEME_COLORS.light,
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -65,9 +64,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         >
           Skip to content
         </a>
-        <SiteHeader />
-        <main id="main">{children}</main>
-        <SiteFooter />
+        <ServiceWorker>
+          <SiteHeader />
+          <main id="main">{children}</main>
+          <SiteFooter />
+        </ServiceWorker>
         <VercelTelemetry />
       </body>
     </html>
