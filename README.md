@@ -16,8 +16,9 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-6-3178C6?logo=typescript&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)
 ![d3-geo](https://img.shields.io/badge/d3--geo-globe-F9A03C?logo=d3dotjs&logoColor=white)
-![Vitest](https://img.shields.io/badge/Vitest-140_tests-6E9F18?logo=vitest&logoColor=white)
-![Playwright](https://img.shields.io/badge/Playwright-19_tests_e2e-2EAD33?logo=playwright&logoColor=white)
+![Vitest](https://img.shields.io/badge/Vitest-146_tests-6E9F18?logo=vitest&logoColor=white)
+![Playwright](https://img.shields.io/badge/Playwright-20_tests_e2e-2EAD33?logo=playwright&logoColor=white)
+![PWA](https://img.shields.io/badge/PWA-works_offline-5A0FC8?logo=pwa&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-Analytics_·_Speed_Insights-000000?logo=vercel)
 
 [**Visit the site**](https://pablo-portfolio-woad.vercel.app) ·
@@ -107,7 +108,9 @@ src/
   app/                  routes (App Router)
     layout.tsx          fonts, metadata, theme script, header, footer and Vercel telemetry
     page.tsx            the home page: its sections in order
-    projects/[slug]/    a documentation page per project (generateStaticParams)
+    projects/[slug]/    a documentation page per project (generateStaticParams), and its loading skeleton
+    serwist/[path]/     the service worker, /serwist/sw.js (built by Serwist from src/sw/)
+    ~offline/           what a page not saved yet shows without a connection
     globals.css         Tailwind CSS v4, the colour tokens (light/dark) and the few custom rules
     sitemap.ts robots.ts not-found.tsx icon.svg
   content/              ALL the copy, as typed data (no text lives in components)
@@ -115,14 +118,17 @@ src/
     experience.ts education.ts world.ts references.ts
     projects/           one file per project + the shared types and lookups
   components/
-    layout/             header (scroll-spy nav, mobile menu, theme toggle), footer, Vercel telemetry
+    layout/             header (scroll-spy nav, mobile menu, theme toggle), footer, Vercel telemetry,
+                        the service worker's registration
     home/               one component per home section, plus its interactive parts
     projects/           project card, cover visual, documentation blocks, table of contents, pager
-    ui/                 rich text, headings, tags, accessible tabs, the GitHub mark (other icons: lucide-react)
+    ui/                 rich text, headings, tags, accessible tabs, skeletons, the GitHub mark (other icons:
+                        lucide-react)
   hooks/                useScrollSpy
   lib/                  pure logic: rich-text parser, theme, globe maths and renderer, helpers
-tests/                  Vitest: lib/, content/ (data integrity) and components/
-e2e/                    Playwright: the home page, the theme and every project page
+  sw/                   the service worker (worker.ts): what it caches, and how
+tests/                  Vitest: lib/, content/ (data integrity), components/ and sw/
+e2e/                    Playwright: the home page, the theme, every project page and opening offline
 public/                 photos, project images, the world map (TopoJSON) and the CV
 docs/img/               screenshots for this README
 ```
@@ -136,9 +142,16 @@ A few decisions worth knowing:
 - **Content is data.** Copy lives in `src/content` as typed objects, with a tiny inline markup (`**bold**`, `*em*`,
   `` `code` ``, `[label](url)`) parsed by `src/lib/rich-text.ts`. Tests check it: every image exists with its
   declared size, every country is on the world map, links are HTTPS, and only deployed projects link to a live site.
-- **Theme without a flash.** Colours are CSS variables switched by the system preference or by `<html data-theme>`.
-  An inline script in `<head>` applies a stored choice before the first paint (not `next/script`, which defers inline
-  code to Next's runtime); the theme icons swap with CSS.
+- **Theme without a flash.** Light by default, whatever the system prefers; the toggle switches to dark and
+  remembers it. Colours are CSS variables switched by `<html data-theme>`; an inline script in `<head>` applies a
+  stored choice before the first paint (not `next/script`, which defers inline code to Next's runtime); the theme
+  icons swap with CSS.
+- **Works offline.** A service worker built with [Serwist](https://serwist.pages.dev) precaches the build (scripts,
+  styles, fonts, the world map) and downloads the home page and every project page when it installs, so the whole
+  site opens without a connection after the first visit. Pages are network first, so a deploy shows up at once;
+  photos and screenshots (resized by `next/image`) are kept as they are seen.
+- **Skeletons.** A project page shows its skeleton at once while a navigation loads it, and the globe a pulsing disc
+  while d3 and the world map download.
 - **The globe** uses d3-geo and topojson, loaded only when its section mounts. It draws outside React
   (`src/lib/globe/globe-renderer.ts`) because it repaints ~180 paths every frame; its rotation maths is pure and
   unit-tested (`src/lib/globe/math.ts`). It pauses off-screen and respects `prefers-reduced-motion`.

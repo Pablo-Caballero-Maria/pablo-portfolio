@@ -6,8 +6,8 @@ abstract: "A statically generated Next.js portfolio and CV deployed on Vercel: e
 authors:
   - family-names: "Caballero María"
     given-names: "Pablo"
-version: 2.3.0
-date-released: 2026-11-21
+version: 2.4.0
+date-released: 2026-11-22
 license: MIT
 repository-code: "https://github.com/Pablo-Caballero-Maria/pablo-portfolio"
 url: "https://pablo-portfolio-woad.vercel.app"

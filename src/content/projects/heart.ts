@@ -282,7 +282,8 @@ export const heart: Project = {
           items: [
             "Ten scenarios (a normal day, ventricular tachycardia, atrial fibrillation, a pause, congestive decompensation, a mobile network outage, the patient away from home, forged dose orders, raw streaming, low battery), plus parameters to change and events to provoke at any time.",
             "Every message carries real bytes: BLE, MQTT 5 over TLS 1.3, SenML on CBOR and HL7 FHIR observations with LOINC codes, all inspectable byte by byte.",
-            "95 Vitest tests (the QRS detector, the network's accuracy, binary formats, alert rules, energy equations, signed dose orders, every scenario end to end) and 11 Playwright end-to-end tests that drive the built site in Chromium (the 3D scene, the tachycardia, AF and forged-order scenarios, the panels and the economics calculator). GitHub Actions runs lint, type checking, coverage, the build and the end-to-end tests on every push; Vercel Web Analytics and Speed Insights measure the live site.",
+            "It opens and runs without a connection once visited (a Serwist service worker keeps the whole simulator, which runs entirely in the browser), with a light theme by default and a dark one, and a skeleton of the 3D scene while three.js loads.",
+            "104 Vitest tests (the QRS detector, the network's accuracy, binary formats, alert rules, energy equations, signed dose orders, every scenario end to end, the theme) and 13 Playwright end-to-end tests that drive the built site in Chromium (the 3D scene, the tachycardia, AF and forged-order scenarios, the panels, the economics calculator, opening offline and the theme). GitHub Actions runs lint, type checking, coverage, the build and the end-to-end tests on every push; Vercel Web Analytics and Speed Insights measure the live site.",
           ],
         },
       ],

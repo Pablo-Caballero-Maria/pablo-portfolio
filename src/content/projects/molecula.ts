@@ -169,7 +169,7 @@ export const molecula: Project = {
       blocks: [
         {
           kind: "paragraph",
-          text: "**74 pytest tests** check the work. 48 unit tests cover the metrics, the models and their Optuna search spaces, the noise and outlier detectors, Tanimoto similarity, feature selection and the figures; 26 integration tests restore CDS16 and CDS29 from the course's backup into a temporary MongoDB, reading the BSON directly so `mongorestore` isn't needed, and check that the scripts reproduce what was handed in.",
+          text: "**77 pytest tests** check the work. 51 unit tests cover the metrics, the models and their Optuna search spaces, the noise and outlier detectors, Tanimoto similarity, feature selection, the figures and the typed schema of the collections; 26 integration tests restore CDS16 and CDS29 from the course's backup into a temporary MongoDB, reading the BSON directly so `mongorestore` isn't needed, and check that the scripts reproduce what was handed in.",
         },
         {
           kind: "list",
@@ -177,6 +177,7 @@ export const molecula: Project = {
             "Phase 1 prints its eleven reports byte for byte as in `fase1_salida.txt`, and the schema rejects every kind of invalid document.",
             "The random forest rebuilt from Optuna's best parameters gives exactly the delivered test GMean (0.632) and AUROC (0.717).",
             "RDKit's Morgan fingerprints match the stored bits, and the similarity pipeline returns the same molecules as the exhaustive scan.",
+            "The queries are typed: every collection is a PyMongo `Collection` of its document's `TypedDict` (employees and departments, as their `$jsonSchema` validators require; molecules and bit frequencies), so ty checks what each query reads and writes.",
             "GitHub Actions runs Ruff, ty and the tests with coverage against a MongoDB 8 service on every push, alongside CodeQL and Dependabot.",
           ],
         },

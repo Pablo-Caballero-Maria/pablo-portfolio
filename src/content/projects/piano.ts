@@ -20,7 +20,7 @@ export const piano: Project = {
     height: 750,
   },
   highlights: [
-    { value: "197", label: "automated tests, 18 of them run on the board" },
+    { value: "260", label: "automated tests, 18 of them run on the board" },
     { value: "0", label: "internet needed for a lesson in the classroom" },
     { value: "AES-256", label: "GCM encryption of every stored record" },
   ],
@@ -29,6 +29,7 @@ export const piano: Project = {
     "MQTT · Mosquitto",
     "Python · FastAPI",
     "Next.js · TypeScript",
+    "Better Auth",
     "MongoDB Atlas",
     "Ably",
     "Vercel",
@@ -124,7 +125,7 @@ export const piano: Project = {
       blocks: [
         {
           kind: "paragraph",
-          text: "A Next.js and TypeScript project built as a static export, so the same files are served by Vercel on the internet and by the laptop in the classroom, with no internet needed. On load it asks `GET /api/config` who it is talking to: in the classroom the lesson goes over the laptop's WebSocket, online over Ably.",
+          text: "A Next.js and TypeScript project built as a static export, so the same files are served by Vercel on the internet and by the laptop in the classroom, with no internet needed. On load it asks `GET /api/config` who it is talking to: in the classroom the lesson goes over the laptop's WebSocket, online over Ably. A service worker (Serwist) keeps the page on the phone, so it opens and plays even if the phone drops off the classroom WiFi; it has a light theme (the default) and a dark one, and skeletons while melodies and the laptop's status load.",
         },
         {
           kind: "figure",
@@ -156,8 +157,9 @@ export const piano: Project = {
           kind: "list",
           items: [
             "Every stored record is sealed with **AES-256-GCM** under a system key held only by the teachers' laptops and Vercel, with the record's key as associated data, so a record copied under another key won't open. The board and Atlas only ever see ciphertext.",
-            "**HKDF-SHA256** derives three independent keys from the system key: one for records, one for identifiers (a keyed hash of the user name, so stored keys reveal no names) and one for signing sessions.",
-            "The password never leaves the browser: it sends a PBKDF2-SHA256 key instead. Sessions are HMAC-signed 30-day tokens that any server holding the key can check, with no session table.",
+            "**HKDF-SHA256** derives independent keys from the system key: one for records, one for identifiers (a keyed hash of the user name, so stored keys reveal no names), Better Auth's secret and the token of the internal accounts API.",
+            "Accounts are **[Better Auth](https://www.better-auth.com)**'s: a Node.js server next to the laptop's Python app (started and supervised by it, with the Node.js uv installs) and a Node function on Vercel. Its custom adapter keeps accounts and 30-day sessions through the Python side's internal API, so they stay sealed on the board or in Atlas with the same rules (unique names system-wide, renamed accounts) and sign-in still works with no internet. The Python API checks Better Auth's signed session tokens itself.",
+            "The password never leaves the browser: it sends a PBKDF2-SHA256 key instead, which Better Auth hashes as before, so existing accounts kept signing in.",
             "In transit: HTTPS and secure WebSockets with a Let's Encrypt certificate, MQTT over TLS with a user and an ACL per board in Mosquitto, and TLS to Atlas, Ably, GitHub and DuckDNS.",
             "**Sync** between each board and Atlas runs whenever the laptop has internet and the board at the same time: the newest copy wins, deletions travel as tombstones, and an account created offline whose name is taken online is renamed (ana → ana-2) while the old name keeps working.",
           ],
@@ -179,19 +181,23 @@ export const piano: Project = {
           rows: [
             [
               "pytest",
-              "102",
-              "The shared core, the laptop app end to end (REST and WebSocket with the board's real storage code), updates against temporary git repositories, and an integration test through a real MQTT broker",
+              "121",
+              "The shared core, the accounts and sessions behind Better Auth, the laptop app end to end (REST and WebSocket with the board's real storage code), the Better Auth process it supervises, updates against temporary git repositories, and an integration test through a real MQTT broker",
             ],
             [
               "…on the board",
-              "18 of the 102",
+              "18 of the 121",
               "Written for MicroPython: pytest runs them on the laptop and the board runs them on itself before installing an update",
             ],
-            ["Vitest", "90", "Website logic, services, the Studio engine and components"],
+            [
+              "Vitest",
+              "132",
+              "Website logic, services, the Studio engine, components, and Better Auth's server (its flows, the adapter, keys that match the Python side's)",
+            ],
             [
               "Playwright",
-              "5",
-              "End to end in Chrome against the laptop app with a simulated board, including that the classroom page talks to nobody but the laptop",
+              "7",
+              "End to end in Chrome against the laptop app with a simulated board and the real Better Auth: a lesson, the buzzer queue, the Studio, that the classroom page talks to nobody but the laptop, opening offline, and the theme",
             ],
           ],
         },

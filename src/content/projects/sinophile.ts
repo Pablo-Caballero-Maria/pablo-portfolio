@@ -29,6 +29,8 @@ export const sinophile: Project = {
     "TypeScript",
     "Tailwind CSS",
     "MongoDB Atlas",
+    "Better Auth",
+    "Serwist (PWA)",
     "Vercel",
     "Vitest",
     "Playwright",
@@ -108,14 +110,15 @@ export const sinophile: Project = {
       blocks: [
         {
           kind: "paragraph",
-          text: "Everything works without an account, but a guest's progress disappears when the app closes: the browser stores nothing except an HttpOnly session cookie. With an account, XP, streaks, spaced-repetition state, exams, achievements and settings are kept in MongoDB Atlas and shared between devices, and the guest's practice can be added on sign-up.",
+          text: "Everything works without an account, but a guest's progress disappears when the app closes: the browser keeps nothing but the session cookie and the offline cache. With an account, XP, streaks, spaced-repetition state, exams, achievements and settings are kept in MongoDB Atlas and shared between devices, and the guest's practice can be added on sign-up. Accounts are [Better Auth](https://www.better-auth.com)'s (username and password), on its official MongoDB adapter.",
         },
         {
           kind: "list",
           items: [
-            "Passwords are hashed with **scrypt**; sessions store only the **SHA-256 of the cookie token** and expire after 180 days.",
+            "**Better Auth** hashes passwords with scrypt and keeps sessions for 180 days in an HttpOnly cookie, with its own per-IP rate limit and origin check. Accounts from before Better Auth moved over on their first sign-in, keeping their id, password and progress.",
+            "Every MongoDB collection is typed: a `Collection<…>` of its document type, Better Auth's included.",
             "Progress changes are sent in the background, only what changed, and the server **merges** them with what it has, so work done on another device is never lost.",
-            "Ten wrong passwords in a row lock the account for 15 minutes, and every request that changes something must be JSON, a simple defence against CSRF.",
+            "Ten wrong passwords in a row lock the account for 15 minutes (a Better Auth hook), and every request that changes something must be JSON, a simple defence against CSRF.",
             "The API runs as Vercel functions in Paris, next to the Atlas cluster in GCP europe-west1.",
           ],
         },
@@ -127,12 +130,12 @@ export const sinophile: Project = {
       blocks: [
         {
           kind: "paragraph",
-          text: "The pages are prerendered and served from Vercel's CDN; only a small API (`src/app/api`) runs on the server. The domain logic lives in plain TypeScript modules (spaced repetition, pinyin parsing with erhua, tolerant answer checking, handwriting scoring, speech, dictionary search, the HSK comparison), and the React components only present it.",
+          text: "The pages are prerendered and served from Vercel's CDN; only a small API (`src/app/api`) runs on the server. After the first visit a service worker (Serwist) keeps the whole app, its lessons and stroke data on the device, so practice works **offline**; there is a light theme (the default) and a dark one, and skeletons while anything loads. The domain logic lives in plain TypeScript modules (spaced repetition, pinyin parsing with erhua, tolerant answer checking, handwriting scoring, speech, dictionary search, the HSK comparison), and the React components only present it.",
         },
         {
           kind: "list",
           items: [
-            "**118 tests** with Vitest (the data files, the learning logic, the API against an in-memory MongoDB, and components with Testing Library) and **14 Playwright end-to-end tests** that drive the built site in Chromium: guest practice, every lesson in `data/`, the dictionary, and signing up, in and out against the real API and MongoDB.",
+            "**132 tests** with Vitest (the data files, the learning logic, the API and Better Auth's flows against an in-memory MongoDB, the service worker's routing, and components with Testing Library) and **16 Playwright end-to-end tests** that drive the built site in Chromium: guest practice, every lesson in `data/`, the dictionary, signing up, in and out against the real API and MongoDB, unvisited pages opening offline, and the theme.",
             "`npm run validate` checks every lesson folder. GitHub Actions validates the data, runs ESLint, Prettier, type checking, the tests with coverage, the build and the end-to-end tests on every push, alongside CodeQL and Dependabot. Vercel Web Analytics and Speed Insights measure visits and Core Web Vitals, without cookies.",
             "Open data: CC-CEDICT (CC BY-SA 4.0), Make Me a Hanzi stroke data, Hanzi Writer and pinyin-pro.",
           ],

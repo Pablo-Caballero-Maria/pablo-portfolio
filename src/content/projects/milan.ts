@@ -191,7 +191,7 @@ coll.create_index([("cellid", 1), ("time", 1)])`,
       blocks: [
         {
           kind: "paragraph",
-          text: "A typed Python 3.14 package: pure functions that build each pipeline, separate modules for loading, analysis, the cell study, plots and reports, and a `typer` CLI whose `--help` doesn't even import PyMongo. The queries are written as Python lists of dictionaries, the same syntax as `mongosh`, so the ones in the report run unchanged in the MongoDB shell. It needs MongoDB 7.0 or later for `$median`, `$topN`, `$dateTrunc` and `$setWindowFields`.",
+          text: "A typed Python 3.14 package: pure functions that build each pipeline, separate modules for loading, analysis, the cell study, plots and reports, and a `typer` CLI whose `--help` doesn't even import PyMongo. The queries are written as Python lists of dictionaries, the same syntax as `mongosh`, so the ones in the report run unchanged in the MongoDB shell, and they are typed: each aggregation stage is a `TypedDict` of its operator (`$match`, `$group`, `$facet`…), and each collection a PyMongo `Collection` of its document type (the raw records, the per-cell and the per-cell-and-hour collections). It needs MongoDB 7.0 or later for `$median`, `$topN`, `$dateTrunc` and `$setWindowFields`.",
         },
         {
           kind: "list",

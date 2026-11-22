@@ -6,11 +6,27 @@ All notable changes to the portfolio are documented here. The format follows
 
 ## [Unreleased]
 
+## [2.4.0] - 2026-11-22
+
+### Added
+
+- **Works offline**: a service worker built with [Serwist](https://serwist.pages.dev) (`src/sw/`, served at
+  `/serwist/sw.js`) precaches the build and downloads the home page and every project page at install, so the
+  whole site opens without a connection after the first visit. Pages are network first; images are kept as they
+  are seen. An `/~offline` page for anything not saved yet.
+- **Skeleton loaders**: a project page's skeleton while a navigation loads it (`loading.tsx`), and a pulsing disc
+  while the globe's code and map download.
+- Tests: the service worker's routing and pages, the offline and loading pages (146 Vitest tests), and an
+  end-to-end test that opens an unvisited project page offline (20 Playwright tests).
+
 ### Changed
 
-- The sinophile page in step with its repository: 118 Vitest tests, now with component tests (Testing Library),
-  and Prettier in its CI.
-
+- **The theme is light by default**, whatever the system prefers; the toggle switches to dark and remembers it,
+  and the browser's theme colour follows the choice.
+- The project pages in step with their repositories: sinophile's accounts with Better Auth, offline use and tests
+  (132 Vitest, 16 Playwright); ESP32 Piano's Better Auth, offline page, light theme and tests (260 in all);
+  Edge AI for heart failure's offline use, themes and tests (104 Vitest, 13 Playwright); typed MongoDB queries in
+  Milan CDR and molecular activity (77 tests).
 - Tailwind CSS is compiled by `@tailwindcss/turbopack`, declared in `next.config.ts` as in the other websites,
   instead of `@tailwindcss/postcss` and `postcss.config.mjs`. The CSS it produces is byte for byte the same.
 - The icons are `lucide-react` (1.75.0, the version the other websites use) instead of the site's own set
@@ -75,7 +91,8 @@ All notable changes to the portfolio are documented here. The format follows
 
 - First version: a single-page portfolio and CV, deployed on Vercel from GitHub.
 
-[Unreleased]: https://github.com/Pablo-Caballero-Maria/pablo-portfolio/compare/v2.3.0...HEAD
+[Unreleased]: https://github.com/Pablo-Caballero-Maria/pablo-portfolio/compare/v2.4.0...HEAD
+[2.4.0]: https://github.com/Pablo-Caballero-Maria/pablo-portfolio/compare/v2.3.0...v2.4.0
 [2.3.0]: https://github.com/Pablo-Caballero-Maria/pablo-portfolio/compare/v2.2.0...v2.3.0
 [2.2.0]: https://github.com/Pablo-Caballero-Maria/pablo-portfolio/compare/v2.1.0...v2.2.0
 [2.1.0]: https://github.com/Pablo-Caballero-Maria/pablo-portfolio/compare/v2.0.0...v2.1.0
