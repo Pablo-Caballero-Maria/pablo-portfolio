@@ -2,23 +2,14 @@
  * Global styles: Tailwind CSS v4, the colour tokens (light and dark), and the few rules that
  * utilities can't express (pseudo-elements, keyframes, the globe's SVG classes).
  *
- * Colours are CSS variables on :root, so the whole site switches theme by changing them: the
- * system preference by default, or an explicit choice stored by the theme toggle as
- * <html data-theme="light|dark"> (set before first paint by the script in layout.tsx).
+ * Colours are CSS variables on :root, so the whole site switches theme by changing them: light by
+ * default, dark when the visitor picks it with the theme toggle, stored as
+ * <html data-theme="dark"> (set before first paint by the script in layout.tsx).
  */
 @import "tailwindcss";
 
-/* `dark:` follows the explicit choice first, then the system preference. */
-@custom-variant dark {
-  &:where([data-theme="dark"], [data-theme="dark"] *) {
-    @slot;
-  }
-  @media (prefers-color-scheme: dark) {
-    &:where(:root:not([data-theme="light"]), :root:not([data-theme="light"]) *) {
-      @slot;
-    }
-  }
-}
+/* `dark:` applies when the visitor chose the dark theme (light is the default). */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 @theme inline {
   --color-bg: var(--bg);
@@ -64,8 +55,7 @@
   --live: #15803d;
 }
 
-/* The dark tokens appear twice (CSS can't share a block between a selector and a media query):
-   for an explicit dark choice, and for the system preference when no choice was made. */
+/* The dark theme, when the visitor picks it. */
 :root[data-theme="dark"] {
   color-scheme: dark;
   --bg: #0a1318;
@@ -85,29 +75,6 @@
   --hue-molecula: #a99eff;
   --hue-milan: #74abff;
   --live: #4ade80;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    color-scheme: dark;
-    --bg: #0a1318;
-    --surface: #101d24;
-    --raised: #16262e;
-    --ink: #e4edf0;
-    --muted: #93a6ae;
-    --line: #22363f;
-    --accent: #56c4de;
-    --accent-soft: #123644;
-    --warm: #f0a560;
-    --warm-soft: #3a2615;
-    --grid: rgb(86 196 222 / 0.06);
-    --hue-sinophile: #ff7f84;
-    --hue-piano: #52d39c;
-    --hue-heart: #4cc9df;
-    --hue-molecula: #a99eff;
-    --hue-milan: #74abff;
-    --live: #4ade80;
-  }
 }
 
 @layer base {

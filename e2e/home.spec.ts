@@ -99,8 +99,9 @@ test.describe("home page", () => {
 });
 
 test.describe("theme", () => {
-  test("follows the system, and a choice survives a reload without flashing", async ({ page }) => {
-    await page.emulateMedia({ colorScheme: "light" });
+  test("is light by default, and a choice survives a reload without flashing", async ({ page }) => {
+    // Light even when the system prefers dark: the default is the site's, not the system's.
+    await page.emulateMedia({ colorScheme: "dark" });
     await page.goto("/");
     const body = page.locator("body");
     await expect(body).toHaveCSS("background-color", "rgb(243, 246, 247)");

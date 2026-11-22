@@ -1,7 +1,7 @@
 /**
- * Colour theme: the system preference unless the visitor picked one with the toggle, which is
- * remembered in localStorage and applied as <html data-theme="…">. The CSS tokens for both
- * themes are in src/app/globals.css.
+ * Colour theme: light unless the visitor picked dark with the toggle, which is remembered in
+ * localStorage and applied as <html data-theme="…">. The CSS tokens for both themes are in
+ * src/app/globals.css.
  */
 
 export type Theme = "light" | "dark";
@@ -13,10 +13,15 @@ export function isTheme(value: unknown): value is Theme {
   return value === "light" || value === "dark";
 }
 
-/** The theme in effect: the explicit choice if there is one, else the system's. */
-export function resolveTheme(explicit: string | null | undefined, systemPrefersDark: boolean): Theme {
-  if (isTheme(explicit)) return explicit;
-  return systemPrefersDark ? "dark" : "light";
+/** The theme every visit starts with. */
+export const DEFAULT_THEME: Theme = "light";
+
+/** The page background of each theme (globals.css → --bg), for the browser's theme colour. */
+export const THEME_COLORS: Record<Theme, string> = { light: "#f3f6f7", dark: "#0a1318" };
+
+/** The theme in effect: the explicit choice if there is one, else light. */
+export function resolveTheme(explicit: string | null | undefined): Theme {
+  return isTheme(explicit) ? explicit : DEFAULT_THEME;
 }
 
 export function oppositeTheme(theme: Theme): Theme {
@@ -48,6 +53,12 @@ export function storeTheme(storage: Pick<Storage, "setItem"> | undefined, theme:
   } catch {
     // Not remembered, but the page still switches.
   }
+}
+
+/** Applies a theme to the page: <html data-theme> and the browser's theme colour (phones' address bar). */
+export function applyTheme(theme: Theme, doc: Document = document): void {
+  doc.documentElement.dataset.theme = theme;
+  doc.querySelector('meta[name="theme-color"]')?.setAttribute("content", THEME_COLORS[theme]);
 }
 
 /**

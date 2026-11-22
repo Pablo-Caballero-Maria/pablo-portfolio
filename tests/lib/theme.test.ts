@@ -1,8 +1,11 @@
 import { describe, expect, it, vi } from "vitest";
 
 import {
+  DEFAULT_THEME,
+  THEME_COLORS,
   THEME_INIT_SCRIPT,
   THEME_STORAGE_KEY,
+  applyTheme,
   isTheme,
   oppositeTheme,
   readStoredTheme,
@@ -11,15 +14,31 @@ import {
 } from "@/lib/theme";
 
 describe("resolveTheme", () => {
-  it("uses an explicit choice over the system preference", () => {
-    expect(resolveTheme("light", true)).toBe("light");
-    expect(resolveTheme("dark", false)).toBe("dark");
+  it("uses an explicit choice", () => {
+    expect(resolveTheme("light")).toBe("light");
+    expect(resolveTheme("dark")).toBe("dark");
   });
 
-  it("falls back to the system preference", () => {
-    expect(resolveTheme(null, true)).toBe("dark");
-    expect(resolveTheme(undefined, false)).toBe("light");
-    expect(resolveTheme("sepia", true)).toBe("dark");
+  it("is light without one, whatever the system prefers", () => {
+    expect(DEFAULT_THEME).toBe("light");
+    vi.spyOn(window, "matchMedia").mockReturnValue({ matches: true } as MediaQueryList);
+    expect(resolveTheme(null)).toBe("light");
+    expect(resolveTheme(undefined)).toBe("light");
+    expect(resolveTheme("sepia")).toBe("light");
+  });
+});
+
+describe("applyTheme", () => {
+  it("sets data-theme and the browser's theme colour", () => {
+    document.head.innerHTML = `<meta name="theme-color" content="${THEME_COLORS.light}">`;
+    applyTheme("dark");
+    expect(document.documentElement.dataset.theme).toBe("dark");
+    expect(document.querySelector('meta[name="theme-color"]')?.getAttribute("content")).toBe(
+      THEME_COLORS.dark,
+    );
+    applyTheme("light");
+    expect(document.documentElement.dataset.theme).toBe("light");
+    document.head.innerHTML = "";
   });
 });
 
@@ -76,7 +95,7 @@ describe("THEME_INIT_SCRIPT", () => {
     expect(document.documentElement.dataset.theme).toBe("dark");
   });
 
-  it("leaves the system preference alone when nothing valid is stored", () => {
+  it("leaves the default (light) alone when nothing valid is stored", () => {
     localStorage.setItem(THEME_STORAGE_KEY, "<script>");
     run();
     expect(document.documentElement.hasAttribute("data-theme")).toBe(false);

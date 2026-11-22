@@ -15,19 +15,21 @@ import { THEME_STORAGE_KEY } from "@/lib/theme";
 import { mockMatchMedia } from "../setup";
 
 describe("ThemeToggle", () => {
-  it("switches from the system's light theme to dark, and remembers it", async () => {
-    mockMatchMedia(false);
+  it("starts light and switches to dark, remembering it", async () => {
     render(<ThemeToggle />);
+    expect(document.documentElement.dataset.theme).toBe("light");
     await userEvent.click(screen.getByRole("button", { name: "Switch colour theme" }));
     expect(document.documentElement.dataset.theme).toBe("dark");
     expect(localStorage.getItem(THEME_STORAGE_KEY)).toBe("dark");
   });
 
-  it("switches from the system's dark theme to light", async () => {
+  it("starts light even when the system prefers dark", async () => {
+    delete document.documentElement.dataset.theme;
     mockMatchMedia(true);
     render(<ThemeToggle />);
-    await userEvent.click(screen.getByRole("button"));
     expect(document.documentElement.dataset.theme).toBe("light");
+    await userEvent.click(screen.getByRole("button"));
+    expect(document.documentElement.dataset.theme).toBe("dark");
     mockMatchMedia(false);
   });
 

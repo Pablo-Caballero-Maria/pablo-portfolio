@@ -1,19 +1,23 @@
 "use client";
 
-import { browserStorage, oppositeTheme, resolveTheme, storeTheme } from "@/lib/theme";
+import { useEffect } from "react";
+
+import { applyTheme, browserStorage, oppositeTheme, resolveTheme, storeTheme } from "@/lib/theme";
 
 import { Moon, Sun } from "lucide-react";
 
 /**
- * Switches between light and dark and remembers the choice. Which icon shows is pure CSS (the
- * `dark:` variant), so the server-rendered button is already right before any JavaScript runs.
+ * Switches between light (the default) and dark and remembers the choice. Which icon shows is pure
+ * CSS (the `dark:` variant), so the server-rendered button is already right before any JavaScript
+ * runs.
  */
 export function ThemeToggle() {
+  // The <head> script set data-theme before the first paint; the browser's theme colour follows.
+  useEffect(() => applyTheme(resolveTheme(document.documentElement.dataset.theme)), []);
+
   function toggle() {
-    const root = document.documentElement;
-    const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const next = oppositeTheme(resolveTheme(root.dataset.theme, systemDark));
-    root.dataset.theme = next;
+    const next = oppositeTheme(resolveTheme(document.documentElement.dataset.theme));
+    applyTheme(next);
     storeTheme(browserStorage(), next);
   }
 
