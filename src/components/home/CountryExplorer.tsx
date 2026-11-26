@@ -1,8 +1,12 @@
 "use client";
 
+import { AnimatePresence } from "motion/react";
+import * as m from "motion/react-m";
 import { useRef, useState } from "react";
 
 import type { Country } from "@/content/types";
+
+import { rise } from "@/lib/motion";
 
 import { Globe, type GlobeHandle } from "./Globe";
 
@@ -52,12 +56,15 @@ export function CountryExplorer({ countries }: CountryExplorerProps) {
           ))}
         </ul>
         <div className="mt-4 min-h-[5.5rem] rounded-xl border border-line bg-surface p-4" aria-live="polite">
-          {active && (
-            <>
-              <p className="font-display font-bold">{active.name}</p>
-              <p className="mt-1 text-sm text-muted">{active.text}</p>
-            </>
-          )}
+          {/* The story of the chosen country slides in; not on the first render (prerendered). */}
+          <AnimatePresence mode="wait" initial={false}>
+            {active && (
+              <m.div key={active.id} {...rise}>
+                <p className="font-display font-bold">{active.name}</p>
+                <p className="mt-1 text-sm text-muted">{active.text}</p>
+              </m.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </div>

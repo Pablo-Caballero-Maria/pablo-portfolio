@@ -98,6 +98,28 @@ test.describe("home page", () => {
   });
 });
 
+test.describe("contact form", () => {
+  // The test browser has no e-mail app to hand the mailto: link to.
+  test.use({ allowedErrors: [/Failed to launch 'mailto:/] });
+
+  test("checks the message, then opens the e-mail app with it", async ({ page }) => {
+    await page.goto("/#contact");
+    const form = page.getByRole("form", { name: "Write to me" });
+    await form.getByRole("button", { name: "Open in my e-mail app" }).click();
+    await expect(form.getByText("Please tell me your name.")).toBeVisible();
+    await expect(form.getByText("Please write at least a couple of sentences.")).toBeVisible();
+
+    await form.getByRole("textbox", { name: /^Name/ }).fill("Ada");
+    await form
+      .getByRole("textbox", { name: /^Message/ })
+      .fill("Hello Pablo, I'd like to talk about a position.");
+    await form.getByRole("button", { name: "Open in my e-mail app" }).click();
+    await expect(form.getByRole("status")).toContainText("should now be open");
+    // The page stays (the link opens the e-mail app, not a new page).
+    await expect(page).toHaveURL(/#contact$/);
+  });
+});
+
 test.describe("theme", () => {
   test("is light by default, and a choice survives a reload without flashing", async ({ page }) => {
     // Light even when the system prefers dark: the default is the site's, not the system's.

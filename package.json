@@ -22,16 +22,22 @@
     "check": "npm run typecheck && npm run lint && npm run format:check && npm test"
   },
   "dependencies": {
+    "@hookform/resolvers": "7.0.9",
     "@serwist/turbopack": "9.5.15",
+    "@tanstack/react-query": "5.108.4",
     "@vercel/analytics": "2.0.1",
     "@vercel/speed-insights": "2.1.0",
     "d3-geo": "3.1.1",
     "lucide-react": "1.75.0",
+    "motion": "14.14.0",
     "next": "16.4.6",
     "react": "19.3.1",
     "react-dom": "19.3.1",
+    "react-hook-form": "7.92.0",
     "serwist": "9.5.15",
-    "topojson-client": "3.1.0"
+    "topojson-client": "3.1.0",
+    "zod": "4.6.7",
+    "zustand": "5.1.0"
   },
   "devDependencies": {
     "@playwright/test": "1.65.1",

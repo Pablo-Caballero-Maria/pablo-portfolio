@@ -15,6 +15,12 @@ export const test = base.extend<{ allowedErrors: RegExp[] }>({
       if (allowedErrors.some((pattern) => pattern.test(message.text()))) return;
       problems.push(`console: ${message.text()}`);
     });
+    // A blocked request or eval doesn't always reach the console: make every CSP violation an error.
+    await page.addInitScript(() =>
+      document.addEventListener("securitypolicyviolation", (event) =>
+        console.error(`CSP violation: ${event.violatedDirective} blocked ${event.blockedURI}`),
+      ),
+    );
     page.on("pageerror", (error) => problems.push(`page error: ${error.message}`));
     await runTest(page);
     expect(problems, "the page logged errors").toEqual([]);

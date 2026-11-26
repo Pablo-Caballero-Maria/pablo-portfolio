@@ -5,7 +5,7 @@ import { Bricolage_Grotesque, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/goo
 import type { ReactNode } from "react";
 
 import { SiteFooter } from "@/components/layout/SiteFooter";
-import { ServiceWorker } from "@/components/layout/ServiceWorker";
+import { Providers } from "@/components/layout/Providers";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { VercelTelemetry } from "@/components/layout/VercelTelemetry";
 import { profile } from "@/content/profile";
@@ -64,11 +64,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         >
           Skip to content
         </a>
-        <ServiceWorker>
+        <Providers>
           <SiteHeader />
           <main id="main">{children}</main>
           <SiteFooter />
-        </ServiceWorker>
+        </Providers>
         <VercelTelemetry />
       </body>
     </html>

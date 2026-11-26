@@ -1,6 +1,7 @@
 import { profile } from "@/content/profile";
 
 import { Download } from "lucide-react";
+import { ContactForm } from "./ContactForm";
 import { CopyButton } from "./CopyButton";
 
 const row = { background: "color-mix(in srgb, var(--bg) 8%, var(--ink))" };
@@ -70,6 +71,7 @@ export function Contact() {
             </a>
           </li>
         </ul>
+        <ContactForm to={profile.email} />
       </div>
     </section>
   );

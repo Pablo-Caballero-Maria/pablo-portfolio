@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-import { applyTheme, browserStorage, oppositeTheme, resolveTheme, storeTheme } from "@/lib/theme";
+import { useThemeStore } from "@/stores/theme";
 
 import { Moon, Sun } from "lucide-react";
 
@@ -12,14 +12,10 @@ import { Moon, Sun } from "lucide-react";
  * runs.
  */
 export function ThemeToggle() {
-  // The <head> script set data-theme before the first paint; the browser's theme colour follows.
-  useEffect(() => applyTheme(resolveTheme(document.documentElement.dataset.theme)), []);
-
-  function toggle() {
-    const next = oppositeTheme(resolveTheme(document.documentElement.dataset.theme));
-    applyTheme(next);
-    storeTheme(browserStorage(), next);
-  }
+  const sync = useThemeStore((state) => state.sync);
+  const toggle = useThemeStore((state) => state.toggle);
+  // The <head> script set data-theme before the first paint; the store and theme colour follow.
+  useEffect(sync, [sync]);
 
   return (
     <button
