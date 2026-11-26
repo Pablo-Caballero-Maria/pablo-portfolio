@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
@@ -33,6 +33,7 @@ describe("ContactForm", () => {
     const href = send.mock.calls[0]![0];
     expect(href.startsWith("mailto:me@example.org?")).toBe(true);
     expect(new URLSearchParams(href.split("?")[1]).get("body")).toBe(`${message}\n\nAda`);
-    expect(screen.getByRole("status")).toHaveTextContent("should now be open");
+    // The status message changes with a short transition (the old one leaves, then the new one comes).
+    await waitFor(() => expect(screen.getByRole("status")).toHaveTextContent("should now be open"));
   });
 });
