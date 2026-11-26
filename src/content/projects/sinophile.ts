@@ -31,6 +31,10 @@ export const sinophile: Project = {
     "MongoDB Atlas",
     "Better Auth",
     "Serwist (PWA)",
+    "Zustand",
+    "TanStack Query",
+    "React Hook Form · Zod",
+    "Motion",
     "Vercel",
     "Vitest",
     "Playwright",
@@ -52,7 +56,7 @@ export const sinophile: Project = {
             width: 1600,
             height: 1000,
             caption:
-              "The home page in guest mode: daily goal and streak, practice modes, and *Your vocabulary* compared with HSK 1. The interface is in Spanish, the language of my classes.",
+              "The home page in guest mode: daily goal and streak, practice modes, and *Your vocabulary* compared with HSK 2 of HSK 3.0. The interface is in Spanish, the language of my classes.",
           },
         },
       ],
@@ -83,11 +87,11 @@ export const sinophile: Project = {
         {
           kind: "list",
           items: [
-            "**Spaced repetition** with Leitner boxes per word *and* skill, smart review, an infinite mode with three lives, exams graded from 0 to 10, and flashcards.",
+            "**Spaced repetition** with Leitner boxes per word *and* skill, smart review, an infinite mode with three lives, exams graded from 0 to 10, and flashcards that start on the face you choose: the Spanish, the hanzi, the pinyin or the sound (left out in silent mode), with the rest and the pronunciation on the back.",
             "**Exercises**: meaning, Spanish → Chinese, listening, sentence dictation, pinyin and tones (choose or type), matching, gap filling, tile translation in both directions, dialogues, questions and pronunciation (speech recognition, or recording and comparing).",
             "**Handwriting**: guided stroke order with Hanzi Writer, and a free mode designed for the iPad and Apple Pencil: you see the Spanish word, draw it on a blank canvas and the hanzi is revealed. Exams grade handwriting stroke by stroke.",
             "**Silent mode** for practising in public: it removes listening and pronunciation exercises and mutes every sound.",
-            "**Your vocabulary**: how many words you know and how much of HSK 1 (150 words) you cover, counting words hidden inside others (书 in 本书, 月 in 一月).",
+            "**Your vocabulary**: how many words you know and how much of HSK 2 you cover, the 500 words of the 2025 HSK 3.0 syllabus (300 of level 1 and 200 of level 2), counting words hidden inside others (书 in 本书, 月 in 一月).",
             "**Dictionary and translator**: my vocabulary plus CC-CEDICT, searchable by hanzi, pinyin with or without tones, Spanish or English, with animated strokes and examples on every word page.",
           ],
         },
@@ -119,7 +123,8 @@ export const sinophile: Project = {
             "Every MongoDB collection is typed: a `Collection<…>` of its document type, Better Auth's included.",
             "Progress changes are sent in the background, only what changed, and the server **merges** them with what it has, so work done on another device is never lost.",
             "Ten wrong passwords in a row lock the account for 15 minutes (a Better Auth hook), and every request that changes something must be JSON, a simple defence against CSRF.",
-            "The API runs as Vercel functions in Paris, next to the Atlas cluster in GCP europe-west1.",
+            "The API runs as Vercel functions in Paris, next to the Atlas cluster in GCP europe-west1. Zod checks every request body, the server's environment and everything downloaded from elsewhere.",
+            "Every response carries a **Content Security Policy** (code only from the site itself; connections only to it and the three services it uses), HSTS, no framing, a strict referrer policy and a Permissions-Policy that grants only the microphone; zod runs without `eval` because of it. The **Vercel Firewall** logs scanners' probes and bot traffic.",
           ],
         },
       ],
@@ -130,12 +135,12 @@ export const sinophile: Project = {
       blocks: [
         {
           kind: "paragraph",
-          text: "The pages are prerendered and served from Vercel's CDN; only a small API (`src/app/api`) runs on the server. After the first visit a service worker (Serwist) keeps the whole app, its lessons and stroke data on the device, so practice works **offline**; there is a light theme (the default) and a dark one, and skeletons while anything loads. The domain logic lives in plain TypeScript modules (spaced repetition, pinyin parsing with erhua, tolerant answer checking, handwriting scoring, speech, dictionary search, the HSK comparison), and the React components only present it.",
+          text: "The pages are prerendered and served from Vercel's CDN; only a small API (`src/app/api`) runs on the server. After the first visit a service worker (Serwist) keeps the whole app, its lessons and stroke data on the device, so practice works **offline**; there is a light theme (the default) and a dark one, and skeletons while anything loads. The domain logic lives in plain TypeScript modules (spaced repetition, pinyin parsing with erhua, tolerant answer checking, handwriting scoring, speech, dictionary search, the HSK comparison), and the React components only present it. Settings, progress and the account live in **zustand** stores; **TanStack Query** loads the exercises, the dictionary, stroke data and translations; the forms are **React Hook Form** with **Zod** schemas shared with the server; and **Motion** adds a few subtle animations.",
         },
         {
           kind: "list",
           items: [
-            "**132 tests** with Vitest (the data files, the learning logic, the API and Better Auth's flows against an in-memory MongoDB, the service worker's routing, and components with Testing Library) and **16 Playwright end-to-end tests** that drive the built site in Chromium: guest practice, every lesson in `data/`, the dictionary, signing up, in and out against the real API and MongoDB, unvisited pages opening offline, and the theme.",
+            "**166 tests** with Vitest (the data files, the learning logic, the API and Better Auth's flows against an in-memory MongoDB, the stores, what is downloaded and validated, the security headers, the service worker's routing, and components with Testing Library) and **23 Playwright end-to-end tests** that drive the built site in Chromium: guest practice, every lesson in `data/`, the flashcards, the dictionary, signing up, in and out against the real API and MongoDB, unvisited pages opening offline, the theme and the security headers; any Content Security Policy violation fails them.",
             "`npm run validate` checks every lesson folder. GitHub Actions validates the data, runs ESLint, Prettier, type checking, the tests with coverage, the build and the end-to-end tests on every push, alongside CodeQL and Dependabot. Vercel Web Analytics and Speed Insights measure visits and Core Web Vitals, without cookies.",
             "Open data: CC-CEDICT (CC BY-SA 4.0), Make Me a Hanzi stroke data, Hanzi Writer and pinyin-pro.",
           ],

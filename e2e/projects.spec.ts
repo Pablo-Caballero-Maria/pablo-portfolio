@@ -2,7 +2,7 @@ import { expect, test } from "./fixtures";
 
 const pages = [
   { slug: "sinophile", name: "sinophile", live: "https://sinophile.vercel.app" },
-  { slug: "piano", name: "ESP32 Piano", live: "https://piano-web-virid.vercel.app" },
+  { slug: "piano", name: "ESP32 Piano", live: "https://esp32-piano.vercel.app" },
   {
     slug: "heart-failure-ai",
     name: "Edge AI for heart failure",

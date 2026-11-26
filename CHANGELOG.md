@@ -6,6 +6,27 @@ All notable changes to the portfolio are documented here. The format follows
 
 ## [Unreleased]
 
+## [2.5.0] - 2026-11-26
+
+### Added
+
+- **Write to me**: a contact form (React Hook Form, checked by Zod) that opens the visitor's e-mail app with the
+  message ready to send.
+- **Security headers** on every response: a Content Security Policy, HSTS, `nosniff`, no framing, a strict referrer
+  policy, `Cross-Origin-Opener-Policy` and `Permissions-Policy`. The end-to-end tests fail on any CSP violation.
+- **Vercel Firewall**: a rule that logs scanners' probes, and the Bot Protection and AI Bots rulesets in log mode.
+- A few subtle animations with **Motion**: the country's story, the globe's tooltip and the form's messages.
+
+### Changed
+
+- The site moved to **pablo-caballero.vercel.app** (the old address redirects to it).
+- The theme is a **zustand** store; the globe's map and code load through **TanStack Query**, the map checked with
+  **Zod** (which runs without `eval`, as the CSP requires).
+- Project pages in step with the repositories: sinophile 1.3.0 (lesson 7, the HSK 2 list of HSK 3.0, flashcards
+  that start on any face, its stack and security), piano 1.3.0 (security headers in both homes, its stack, the new
+  address esp32-piano.vercel.app) and the heart-failure simulator 1.3.0 (the detailed 3D scene, the in-browser
+  week, exact values in the calculator), with their current test counts.
+
 ## [2.4.0] - 2026-11-22
 
 ### Added
@@ -91,7 +112,8 @@ All notable changes to the portfolio are documented here. The format follows
 
 - First version: a single-page portfolio and CV, deployed on Vercel from GitHub.
 
-[Unreleased]: https://github.com/Pablo-Caballero-Maria/pablo-portfolio/compare/v2.4.0...HEAD
+[Unreleased]: https://github.com/Pablo-Caballero-Maria/pablo-portfolio/compare/v2.5.0...HEAD
+[2.5.0]: https://github.com/Pablo-Caballero-Maria/pablo-portfolio/compare/v2.4.0...v2.5.0
 [2.4.0]: https://github.com/Pablo-Caballero-Maria/pablo-portfolio/compare/v2.3.0...v2.4.0
 [2.3.0]: https://github.com/Pablo-Caballero-Maria/pablo-portfolio/compare/v2.2.0...v2.3.0
 [2.2.0]: https://github.com/Pablo-Caballero-Maria/pablo-portfolio/compare/v2.1.0...v2.2.0

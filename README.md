@@ -9,19 +9,19 @@
 [![Coverage](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FPablo-Caballero-Maria%2Fpablo-portfolio%2Fbadges%2Fcoverage.json)](https://github.com/Pablo-Caballero-Maria/pablo-portfolio/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/Pablo-Caballero-Maria/pablo-portfolio)](https://github.com/Pablo-Caballero-Maria/pablo-portfolio/releases)
 [![License: MIT (code)](<https://img.shields.io/badge/license-MIT_(code)-blue>)](LICENSE)
-[![Website](https://img.shields.io/website?url=https%3A%2F%2Fpablo-portfolio-woad.vercel.app&label=pablo-portfolio-woad.vercel.app)](https://pablo-portfolio-woad.vercel.app)
+[![Website](https://img.shields.io/website?url=https%3A%2F%2Fpablo-caballero.vercel.app&label=pablo-caballero.vercel.app)](https://pablo-caballero.vercel.app)
 
 ![Next.js](https://img.shields.io/badge/Next.js-16-000000?logo=nextdotjs)
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-6-3178C6?logo=typescript&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)
 ![d3-geo](https://img.shields.io/badge/d3--geo-globe-F9A03C?logo=d3dotjs&logoColor=white)
-![Vitest](https://img.shields.io/badge/Vitest-146_tests-6E9F18?logo=vitest&logoColor=white)
-![Playwright](https://img.shields.io/badge/Playwright-20_tests_e2e-2EAD33?logo=playwright&logoColor=white)
+![Vitest](https://img.shields.io/badge/Vitest-166_tests-6E9F18?logo=vitest&logoColor=white)
+![Playwright](https://img.shields.io/badge/Playwright-25_tests_e2e-2EAD33?logo=playwright&logoColor=white)
 ![PWA](https://img.shields.io/badge/PWA-works_offline-5A0FC8?logo=pwa&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-Analytics_·_Speed_Insights-000000?logo=vercel)
 
-[**Visit the site**](https://pablo-portfolio-woad.vercel.app) ·
+[**Visit the site**](https://pablo-caballero.vercel.app) ·
 [Wiki](https://github.com/Pablo-Caballero-Maria/pablo-portfolio/wiki) ·
 [Changelog](CHANGELOG.md) ·
 [CV (PDF)](public/Pablo_Caballero_CV.pdf)
@@ -42,13 +42,13 @@ Every push to `main` deploys to production; every other branch gets a preview de
   inside a 3D simulator), with links to the deployed sites; two are data-analysis coursework that runs locally
   (molecular activity prediction, Milan CDR).
 
-| Project                                                                                              | Kind                                  | Live site                                                            | Repository                                                                      |
-| ---------------------------------------------------------------------------------------------------- | ------------------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| [sinophile](https://pablo-portfolio-woad.vercel.app/projects/sinophile)                              | web app · personal project            | [sinophile.vercel.app](https://sinophile.vercel.app)                 | [sinophile](https://github.com/Pablo-Caballero-Maria/sinophile)                 |
-| [ESP32 Piano](https://pablo-portfolio-woad.vercel.app/projects/piano)                                | IoT · university project              | [piano-web-virid.vercel.app](https://piano-web-virid.vercel.app)     | [piano](https://github.com/Pablo-Caballero-Maria/piano)                         |
-| [Edge AI for heart failure](https://pablo-portfolio-woad.vercel.app/projects/heart-failure-ai)       | deep learning · biosignals · Master's | [simulador-iot-icc.vercel.app](https://simulador-iot-icc.vercel.app) | [simulador-iot-icc](https://github.com/Pablo-Caballero-Maria/simulador-iot-icc) |
-| [Molecular activity prediction](https://pablo-portfolio-woad.vercel.app/projects/molecular-activity) | cheminformatics & ML · Master's       | runs locally                                                         | [trabajo_molecula](https://github.com/Pablo-Caballero-Maria/trabajo_molecula)   |
-| [Milan CDR analytics](https://pablo-portfolio-woad.vercel.app/projects/milan-cdr)                    | big data · coursework                 | runs locally                                                         | [milan-cdr](https://github.com/Pablo-Caballero-Maria/milan-cdr)                 |
+| Project                                                                                         | Kind                                  | Live site                                                            | Repository                                                                      |
+| ----------------------------------------------------------------------------------------------- | ------------------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| [sinophile](https://pablo-caballero.vercel.app/projects/sinophile)                              | web app · personal project            | [sinophile.vercel.app](https://sinophile.vercel.app)                 | [sinophile](https://github.com/Pablo-Caballero-Maria/sinophile)                 |
+| [ESP32 Piano](https://pablo-caballero.vercel.app/projects/piano)                                | IoT · university project              | [esp32-piano.vercel.app](https://esp32-piano.vercel.app)             | [piano](https://github.com/Pablo-Caballero-Maria/piano)                         |
+| [Edge AI for heart failure](https://pablo-caballero.vercel.app/projects/heart-failure-ai)       | deep learning · biosignals · Master's | [simulador-iot-icc.vercel.app](https://simulador-iot-icc.vercel.app) | [simulador-iot-icc](https://github.com/Pablo-Caballero-Maria/simulador-iot-icc) |
+| [Molecular activity prediction](https://pablo-caballero.vercel.app/projects/molecular-activity) | cheminformatics & ML · Master's       | runs locally                                                         | [trabajo_molecula](https://github.com/Pablo-Caballero-Maria/trabajo_molecula)   |
+| [Milan CDR analytics](https://pablo-caballero.vercel.app/projects/milan-cdr)                    | big data · coursework                 | runs locally                                                         | [milan-cdr](https://github.com/Pablo-Caballero-Maria/milan-cdr)                 |
 
 > [!NOTE]
 > The project pages are written from each project's README, report and results, and kept in step with the
@@ -119,16 +119,19 @@ src/
     projects/           one file per project + the shared types and lookups
   components/
     layout/             header (scroll-spy nav, mobile menu, theme toggle), footer, Vercel telemetry,
-                        the service worker's registration
+                        Providers (TanStack Query, motion, the service worker's registration)
     home/               one component per home section, plus its interactive parts
     projects/           project card, cover visual, documentation blocks, table of contents, pager
     ui/                 rich text, headings, tags, accessible tabs, skeletons, the GitHub mark (other icons:
                         lucide-react)
   hooks/                useScrollSpy
-  lib/                  pure logic: rich-text parser, theme, globe maths and renderer, helpers
+  lib/                  pure logic: rich-text parser, theme, globe maths, renderer and world map (zod),
+                        the contact form's rules, the security headers, zod without eval, animations, helpers
+  stores/               zustand stores (the theme)
   sw/                   the service worker (worker.ts): what it caches, and how
-tests/                  Vitest: lib/, content/ (data integrity), components/ and sw/
-e2e/                    Playwright: the home page, the theme, every project page and opening offline
+tests/                  Vitest: lib/, content/ (data integrity), components/, stores/ and sw/
+e2e/                    Playwright: the home page, the theme, the contact form, every project page, opening
+                        offline and the security headers
 public/                 photos, project images, the world map (TopoJSON) and the CV
 docs/img/               screenshots for this README
 ```
@@ -156,6 +159,19 @@ A few decisions worth knowing:
   (`src/lib/globe/globe-renderer.ts`) because it repaints ~180 paths every frame; its rotation maths is pure and
   unit-tested (`src/lib/globe/math.ts`). It pauses off-screen and respects `prefers-reduced-motion`.
 - **Images** go through `next/image` (AVIF/WebP at the right width), with explicit sizes.
+- **Contact form.** The site has no server, so _Write to me_ (React Hook Form, checked by a Zod schema) opens the
+  visitor's e-mail app with the message ready to send.
+- **State and data.** The theme is a zustand store shared by everything that changes it; the globe's map and code
+  load once through TanStack Query, and the map is checked with Zod before d3 trusts it.
+- **A few subtle animations** with Motion (the country's story, the globe's tooltip, the form's messages), only for
+  things that appear after an action and none when the system asks for reduced motion.
+- **Security headers** on every response (`src/lib/security-headers.ts`, applied in `next.config.ts`): a Content
+  Security Policy (code, styles, fonts and connections only from the site itself; Vercel's toolbar only on
+  previews), HSTS, `nosniff`, no framing, a strict referrer policy, `Cross-Origin-Opener-Policy` and a
+  `Permissions-Policy` that grants nothing. Scripts still allow `'unsafe-inline'`: the pages are prerendered, and the
+  data Next.js puts in inline scripts could only be authorised with a per-request nonce. Zod runs without `eval`
+  (`src/lib/zod.ts`, enforced by ESLint). The **Vercel Firewall** adds DDoS mitigation, logs scanners' probes and
+  bot traffic.
 
 <p align="center">
   <img src="docs/img/project.webp" alt="A project page: kind, name, tagline, the live site in a browser frame and three headline figures" width="49%">
@@ -179,13 +195,13 @@ A few decisions worth knowing:
 
 ## Testing and continuous integration
 
-| Suite                       |   Tests | What they cover                                                                                                   |
-| --------------------------- | ------: | ----------------------------------------------------------------------------------------------------------------- |
-| Vitest (`tests/lib`)        |      44 | the rich-text parser, the theme, the globe's rotation maths and small helpers                                     |
-| Vitest (`tests/content`)    |      66 | data integrity: images and their sizes, countries on the map, HTTPS links, live links only when deployed          |
-| Vitest (`tests/components`) |      30 | pages, project cards and the interactive parts, with Testing Library                                              |
-| **Vitest in total**         | **140** | with v8 coverage                                                                                                  |
-| Playwright (`e2e/`)         |      19 | the home page, the theme, the globe and every project page, against the production build; any console error fails |
+| Suite                                            |   Tests | What they cover                                                                                                                                                                             |
+| ------------------------------------------------ | ------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Vitest (`tests/lib`, `tests/stores`, `tests/sw`) |      66 | the rich-text parser, the theme and its store, the globe's rotation maths and world map, the contact form's rules, the security headers, the service worker and small helpers               |
+| Vitest (`tests/content`)                         |      66 | data integrity: images and their sizes, countries on the map, HTTPS links, live links only when deployed                                                                                    |
+| Vitest (`tests/components`)                      |      34 | pages, project cards, the contact form and the interactive parts, with Testing Library                                                                                                      |
+| **Vitest in total**                              | **166** | with v8 coverage                                                                                                                                                                            |
+| Playwright (`e2e/`)                              |      25 | the home page, the theme, the globe, the contact form, every project page, opening offline and the security headers, against the production build; any console error or CSP violation fails |
 
 Every push and pull request runs on [GitHub Actions](https://github.com/Pablo-Caballero-Maria/pablo-portfolio/actions):
 

@@ -8,7 +8,7 @@
 | < 2.3.0                               |    ❌     |
 
 Only `main` is maintained: it is what Vercel serves at
-[pablo-portfolio-woad.vercel.app](https://pablo-portfolio-woad.vercel.app).
+[pablo-caballero.vercel.app](https://pablo-caballero.vercel.app).
 
 ## Reporting a vulnerability
 

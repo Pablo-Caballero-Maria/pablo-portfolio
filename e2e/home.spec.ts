@@ -25,7 +25,7 @@ test.describe("home page", () => {
     const piano = section.getByRole("article", { name: "ESP32 Piano" });
     await expect(piano.getByRole("link", { name: /visit site/i })).toHaveAttribute(
       "href",
-      "https://piano-web-virid.vercel.app",
+      "https://esp32-piano.vercel.app",
     );
     const heart = section.getByRole("article", { name: "Edge AI for heart failure" });
     await expect(heart.getByRole("link", { name: /visit site/i })).toHaveAttribute(

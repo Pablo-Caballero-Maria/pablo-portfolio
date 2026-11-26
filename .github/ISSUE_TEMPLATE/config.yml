@@ -7,5 +7,5 @@ contact_links:
     url: https://github.com/Pablo-Caballero-Maria/pablo-portfolio/wiki
     about: "How the site is built, how to add a project, testing and deployment."
   - name: "Live site"
-    url: https://pablo-portfolio-woad.vercel.app
+    url: https://pablo-caballero.vercel.app
     about: "Check the latest version before reporting."

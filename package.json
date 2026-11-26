@@ -1,6 +1,6 @@
 {
   "name": "pablo-portfolio",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "private": true,
   "description": "Portfolio and CV of Pablo Caballero María: a statically generated Next.js site deployed on Vercel",
   "type": "module",

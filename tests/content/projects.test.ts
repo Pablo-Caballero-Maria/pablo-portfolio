@@ -64,7 +64,7 @@ describe("the projects", () => {
 
   it("link to the live site only when they are deployed", () => {
     expect(liveUrl(getProject("sinophile")!)).toBe("https://sinophile.vercel.app");
-    expect(liveUrl(getProject("piano")!)).toBe("https://piano-web-virid.vercel.app");
+    expect(liveUrl(getProject("piano")!)).toBe("https://esp32-piano.vercel.app");
     expect(liveUrl(getProject("heart-failure-ai")!)).toBe("https://simulador-iot-icc.vercel.app");
     expect(liveUrl(getProject("molecular-activity")!)).toBeNull();
     expect(liveUrl(getProject("milan-cdr")!)).toBeNull();

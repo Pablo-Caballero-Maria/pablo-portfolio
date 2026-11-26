@@ -52,7 +52,7 @@ describe("project documentation pages", () => {
     );
     expect(screen.getByRole("link", { name: /visit site/i })).toHaveAttribute(
       "href",
-      "https://piano-web-virid.vercel.app",
+      "https://esp32-piano.vercel.app",
     );
   });
 

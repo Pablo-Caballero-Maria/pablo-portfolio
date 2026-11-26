@@ -6,7 +6,7 @@ import { isDocument, isPage, type RequestInfo } from "@/sw/requests";
 import { buildRevision } from "@/sw/revision";
 
 const info = (path: string, mode: string, destination: string, sameOrigin = true): RequestInfo => ({
-  url: new URL(path, "https://pablo-portfolio-woad.vercel.app"),
+  url: new URL(path, "https://pablo-caballero.vercel.app"),
   request: { mode: mode as RequestMode, destination: destination as RequestDestination },
   sameOrigin,
 });

@@ -11,7 +11,7 @@ body:
     id: page
     attributes:
       label: "Page"
-      placeholder: "e.g. https://pablo-portfolio-woad.vercel.app/projects/piano"
+      placeholder: "e.g. https://pablo-caballero.vercel.app/projects/piano"
     validations:
       required: true
   - type: textarea

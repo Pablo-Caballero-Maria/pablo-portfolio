@@ -11,7 +11,7 @@ export const piano: Project = {
   summary:
     "A fog-computing system for a classroom: the teacher's laptop serves the web app, runs the live lesson and drives an ESP32 over MQTT with TLS, while students at home follow the same lesson through Vercel and Ably. The class works without internet, updates itself from GitHub only after its tests pass, and encrypts every stored record.",
   hue: "piano",
-  deployment: { kind: "live", url: "https://piano-web-virid.vercel.app" },
+  deployment: { kind: "live", url: "https://esp32-piano.vercel.app" },
   repository: "https://github.com/Pablo-Caballero-Maria/piano",
   cover: {
     src: "/img/projects/piano-cover.webp",
@@ -20,7 +20,7 @@ export const piano: Project = {
     height: 750,
   },
   highlights: [
-    { value: "260", label: "automated tests, 18 of them run on the board" },
+    { value: "281", label: "automated tests, 18 of them run on the board" },
     { value: "0", label: "internet needed for a lesson in the classroom" },
     { value: "AES-256", label: "GCM encryption of every stored record" },
   ],
@@ -125,7 +125,7 @@ export const piano: Project = {
       blocks: [
         {
           kind: "paragraph",
-          text: "A Next.js and TypeScript project built as a static export, so the same files are served by Vercel on the internet and by the laptop in the classroom, with no internet needed. On load it asks `GET /api/config` who it is talking to: in the classroom the lesson goes over the laptop's WebSocket, online over Ably. A service worker (Serwist) keeps the page on the phone, so it opens and plays even if the phone drops off the classroom WiFi; it has a light theme (the default) and a dark one, and skeletons while melodies and the laptop's status load.",
+          text: "A Next.js and TypeScript project built as a static export, so the same files are served by Vercel on the internet and by the laptop in the classroom, with no internet needed. On load it asks `GET /api/config` who it is talking to: in the classroom the lesson goes over the laptop's WebSocket, online over Ably. A service worker (Serwist) keeps the page on the phone, so it opens and plays even if the phone drops off the classroom WiFi; it has a light theme (the default) and a dark one, and skeletons while melodies and the laptop's status load. Its state lives in **zustand** stores, **TanStack Query** loads melody lists and the laptop's status, the login is a **React Hook Form** form with a **Zod** schema, and **Motion** animates toasts and form errors.",
         },
         {
           kind: "figure",
@@ -161,6 +161,7 @@ export const piano: Project = {
             "Accounts are **[Better Auth](https://www.better-auth.com)**'s: a Node.js server next to the laptop's Python app (started and supervised by it, with the Node.js uv installs) and a Node function on Vercel. Its custom adapter keeps accounts and 30-day sessions through the Python side's internal API, so they stay sealed on the board or in Atlas with the same rules (unique names system-wide, renamed accounts) and sign-in still works with no internet. The Python API checks Better Auth's signed session tokens itself.",
             "The password never leaves the browser: it sends a PBKDF2-SHA256 key instead, which Better Auth hashes as before, so existing accounts kept signing in.",
             "In transit: HTTPS and secure WebSockets with a Let's Encrypt certificate, MQTT over TLS with a user and an ACL per board in Mosquitto, and TLS to Atlas, Ably, GitHub and DuckDNS.",
+            "**Security headers** on every response, defined once for both homes: a Content Security Policy (the site itself, plus Ably online and the laptop's WebSocket in class), HSTS online, no framing, a strict referrer policy. Vercel gets them in `vercel.json`, the laptop from the website's build. Zod checks every answer the page and Better Auth's server receive, and the **Vercel Firewall** logs scanners' probes and bot traffic.",
             "**Sync** between each board and Atlas runs whenever the laptop has internet and the board at the same time: the newest copy wins, deletions travel as tombstones, and an account created offline whose name is taken online is renamed (ana → ana-2) while the old name keeps working.",
           ],
         },
@@ -181,23 +182,23 @@ export const piano: Project = {
           rows: [
             [
               "pytest",
-              "121",
+              "124",
               "The shared core, the accounts and sessions behind Better Auth, the laptop app end to end (REST and WebSocket with the board's real storage code), the Better Auth process it supervises, updates against temporary git repositories, and an integration test through a real MQTT broker",
             ],
             [
               "…on the board",
-              "18 of the 121",
+              "18 of the 124",
               "Written for MicroPython: pytest runs them on the laptop and the board runs them on itself before installing an update",
             ],
             [
               "Vitest",
-              "132",
-              "Website logic, services, the Studio engine, components, and Better Auth's server (its flows, the adapter, keys that match the Python side's)",
+              "148",
+              "Website logic, services and the validation of every server answer, the Studio engine, components, the security headers, and Better Auth's server (its flows, the adapter, its environment, keys that match the Python side's)",
             ],
             [
               "Playwright",
-              "7",
-              "End to end in Chrome against the laptop app with a simulated board and the real Better Auth: a lesson, the buzzer queue, the Studio, that the classroom page talks to nobody but the laptop, opening offline, and the theme",
+              "9",
+              "End to end in Chrome against the laptop app with a simulated board and the real Better Auth: a lesson, the buzzer queue, the Studio, that the classroom page talks to nobody but the laptop, opening offline, the theme and the laptop's security headers; any Content Security Policy violation fails them",
             ],
           ],
         },
